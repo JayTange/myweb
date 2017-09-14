@@ -1,5 +1,6 @@
 package org.seckill.service.impl;
 
+import org.seckill.dao.RedisDao;
 import org.seckill.dao.SecKillDao;
 import org.seckill.dao.SuccessKilledDao;
 import org.seckill.dto.Exposer;
@@ -36,6 +37,9 @@ public class SeckillServiceImpl implements SecKillService {
     @Autowired
     private SuccessKilledDao successKilledDao;
 
+    @Autowired
+    private RedisDao redisDao;
+
     public List<SecKill> getSeckilList() {
         return secKillDao.queryAll(0, 4);
     }
@@ -45,7 +49,21 @@ public class SeckillServiceImpl implements SecKillService {
     }
 
     public Exposer exportSeckillUrl(long seckillId) {
-        SecKill secKill = secKillDao.queryById(seckillId);
+
+        //秒杀优化点,通过redis缓存, 超时的基础上维护一致性
+        //1:访问redis
+        SecKill secKill = redisDao.getSecKill(seckillId);
+        if(secKill == null){
+            //2:访问数据库
+            secKill = secKillDao.queryById(seckillId);
+            if(secKill == null){
+                return new Exposer(false,seckillId);
+            }else {
+                //3:放入redis
+                redisDao.putSeckill(secKill);
+            }
+        }
+
         if (secKill == null) {
             return new Exposer(false, seckillId);
         }
