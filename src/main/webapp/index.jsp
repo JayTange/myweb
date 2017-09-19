@@ -14,7 +14,7 @@
 <body>
 <%
     //页面跳转
-    pageContext.forward("/list");
+    pageContext.forward("/resource/html/index/header.html");
 %>
 </body>
 </html>

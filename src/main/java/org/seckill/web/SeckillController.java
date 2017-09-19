@@ -36,6 +36,13 @@ public class SeckillController {
 
     }
 
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public String showIndex(Model model) {
+        // list.jsp+model = ModelAndView
+        return "index";//WEB-INF/JSP/list.jsp
+
+    }
+
     @RequestMapping(value = "/{seckillId}/detail", method = RequestMethod.GET)
     public String detail(@PathVariable("seckillId") Long seckillId, Model model) {
         if (seckillId == null) {

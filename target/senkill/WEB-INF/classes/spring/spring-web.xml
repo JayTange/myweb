@@ -38,7 +38,7 @@
     <mvc:default-servlet-handler/>
 
 
-    <mvc:resources mapping="/html/**" location="/WEB-INF/html/"/>
+    <mvc:resources mapping="/html/**/**" location="/resource/html/"/>
     <mvc:resources mapping="/js/**" location="resource/js/" />
     <mvc:resources mapping="/images/**" location="resource/image/" />
     <mvc:resources mapping="/css/**" location="resource/css/" />
