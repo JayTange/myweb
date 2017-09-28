@@ -2,6 +2,8 @@ package org.seckill.web;
 
 import org.seckill.dao.User;
 import org.seckill.dto.SeckillResult;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,10 +20,21 @@ import java.util.List;
 @Controller
 @RequestMapping
 public class LoginController {
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public String login(User user){
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @ResponseBody
+    public SeckillResult<Integer> login(User user) {
         System.out.println(user.getUserName());
         System.out.println(user.getPassword());
-        return "/list";
+        String password = user.getPassword();
+        String compare = "123";
+        if (password.equals(compare)){
+            return new SeckillResult<Integer>(true,1);
+        }else {
+            return new SeckillResult<Integer>(false, "用户名或密码错误");
+        }
     }
+
 }

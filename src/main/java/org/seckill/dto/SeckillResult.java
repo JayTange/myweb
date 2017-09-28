@@ -7,28 +7,28 @@ package org.seckill.dto;
  */
 public class SeckillResult<T> {
 
-    private boolean successs;
+    private boolean success;
 
     private T data;
 
     private String error;
 
-    public SeckillResult(boolean successs, T data) {
-        this.successs = successs;
+    public SeckillResult(boolean success, T data) {
+        this.success = success;
         this.data = data;
     }
 
-    public SeckillResult(boolean successs, String error) {
-        this.successs = successs;
+    public SeckillResult(boolean success, String error) {
+        this.success = success;
         this.error = error;
     }
 
     public boolean isSuccesss() {
-        return successs;
+        return success;
     }
 
     public void setSuccesss(boolean successs) {
-        this.successs = successs;
+        this.success = successs;
     }
 
     public T getData() {
