@@ -180,7 +180,7 @@
 
       <artifactId>spring-core</artifactId>
 
-      <version>4.1.7.RELEASE</version>
+      <version>4.2.5.RELEASE</version>
 
     </dependency>
 
@@ -190,7 +190,7 @@
 
       <artifactId>spring-beans</artifactId>
 
-      <version>4.1.7.RELEASE</version>
+      <version>4.2.5.RELEASE</version>
 
     </dependency>
 
@@ -200,7 +200,7 @@
 
       <artifactId>spring-context</artifactId>
 
-      <version>4.1.7.RELEASE</version>
+      <version>4.2.5.RELEASE</version>
 
     </dependency>
 
@@ -212,7 +212,7 @@
 
       <artifactId>spring-jdbc</artifactId>
 
-      <version>4.1.7.RELEASE</version>
+      <version>4.2.5.RELEASE</version>
 
     </dependency>
 
@@ -222,7 +222,7 @@
 
       <artifactId>spring-tx</artifactId>
 
-      <version>4.1.7.RELEASE</version>
+      <version>4.2.5.RELEASE</version>
 
     </dependency>
 
@@ -234,7 +234,7 @@
 
       <artifactId>spring-web</artifactId>
 
-      <version>4.1.7.RELEASE</version>
+      <version>4.2.5.RELEASE</version>
 
     </dependency>
 
@@ -244,7 +244,7 @@
 
       <artifactId>spring-webmvc</artifactId>
 
-      <version>4.1.7.RELEASE</version>
+      <version>4.2.5.RELEASE</version>
 
     </dependency>
 
@@ -256,7 +256,7 @@
 
       <artifactId>spring-test</artifactId>
 
-      <version>4.1.7.RELEASE</version>
+      <version>4.2.5.RELEASE</version>
 
     </dependency>
 

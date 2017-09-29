@@ -6,9 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +15,7 @@ import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping
 public class LoginController {
 
@@ -35,6 +33,16 @@ public class LoginController {
         }else {
             return new SeckillResult<Integer>(false, "用户名或密码错误");
         }
+    }
+
+
+    @CrossOrigin
+    @RequestMapping(value = "/crosslogin",method = RequestMethod.POST)
+    public SeckillResult<Integer> crossLogin(@RequestParam(value = "userName")String userName,
+                                                @RequestParam(value = "password")String password){
+        System.out.println(userName);
+        System.out.println(password);
+        return new SeckillResult<Integer>(true,1);
     }
 
 }

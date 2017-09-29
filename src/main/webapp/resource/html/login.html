@@ -39,6 +39,10 @@
             border: none;
             border-bottom: 1px solid #dadada;
         }
+        .bg-img > h3 {
+            text-shadow: 0px 2px 3px #555;
+            color: #cac9c8;
+        }
     </style>
 </head>
 <body>
@@ -86,7 +90,7 @@
                 success: function (data) {
                     var succe = data['successs'];
                     if (data && succe) {
-                        window.location.href = '/list';
+                        window.location.href = '/resource/html/manage.html';
                     } else {
                         alert(data['error']);
                     }
