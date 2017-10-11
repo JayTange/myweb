@@ -23,12 +23,12 @@ public class SeckillResult<T> {
         this.error = error;
     }
 
-    public boolean isSuccesss() {
+    public boolean isSuccess() {
         return success;
     }
 
-    public void setSuccesss(boolean successs) {
-        this.success = successs;
+    public void setSuccess(boolean success) {
+        this.success = success;
     }
 
     public T getData() {

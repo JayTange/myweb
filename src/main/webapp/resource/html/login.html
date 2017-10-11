@@ -76,7 +76,7 @@
             </form>
         </div>
     </div>
-</div>btn-block
+</div>
 <script type="text/javascript">
     $(document).ready(function () {
         $("#button_submit").click(function () {
@@ -90,7 +90,7 @@
                 success: function (data) {
                     var succe = data['success'];
                     if (data && succe) {
-                        window.location.href = '/resource/html/manage.html';
+                        window.location.href = '/index';
                     } else {
                         alert(data['error']);
                     }

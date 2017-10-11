@@ -1,68 +1,104 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@include file="common/tag.jsp"%>
-<!DOCTYPE html>
 <html>
-<head>
-    <title>Title</title>
-    <%@include file="common/head.jsp" %>
-</head>
-<body>
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Brand</a>
+<%@include file="util/header.jsp" %>
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">Tale仪表盘</h4>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6 col-lg-3">
+            <div class="mini-stat clearfix bx-shadow bg-info">
+                <span class="mini-stat-icon"><i class="fa fa-quote-right" aria-hidden="true"></i></span>
+                <div class="mini-stat-info text-right">
+                    发表了<span class="counter">${statistics.articles}</span>篇文章
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <div class="mini-stat clearfix bg-purple bx-shadow">
+                <span class="mini-stat-icon"><i class="fa fa-comments-o" aria-hidden="true"></i></span>
+                <div class="mini-stat-info text-right">
+                    收到了<span class="counter">${statistics.comments}</span>条留言
+                </div>
+            </div>
         </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Link</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <form class="navbar-form navbar-left">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
+        <div class="col-sm-6 col-lg-3">
+            <div class="mini-stat clearfix bg-success bx-shadow">
+                <span class="mini-stat-icon"><i class="fa fa-cloud-upload" aria-hidden="true"></i></span>
+                <div class="mini-stat-info text-right">
+                    上传了<span class="counter">${statistics.attachs}</span>个附件
                 </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Link</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
-<script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
+            </div>
+        </div>
 
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">最新文章</h4>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                        #for(article : articles)
+                        <li class="list-group-item">
+                            <span class="badge badge-primary"
+                                  title="${article.commentsNum}条评论">${article.commentsNum}</span>
+                            <a target="_blank" href="${site_url('/article/')}${article.cid}">${article.title}</a>
+                        </li>
+                        #end
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">最新留言</h4>
+                </div>
+                <div class="panel-body">
+                    #if(null == comments || comments.size() == 0)
+                    <div class="alert alert-warning">
+                        还没有收到留言.
+                    </div>
+                    #else
+                    <ul class="list-group">
+                        #for(comment : comments)
+                        <li class="list-group-item">
+                            #if(null != comment.url && comment.url != '')
+                            <a href="${comment.url}" target="_blank">${comment.author}</a>
+                            #else
+                            ${comment.author}
+                            #end
+                            于${fmtdate(comment.created,'MM月dd日HH:mm')} ：<a href="${site_url('/article/')}${comment.cid}#comments" target="_blank">${article(comment.content)}</a>
+                        </li>
+                        #end
+                    </ul>
+                    #end
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">系统日志</h4>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                        #for(log : logs)
+                        <li class="list-group-item">
+                            <span>${fmtdate(log.created, 'yyyy-MM-dd HH:mm:ss')} => ${log.action}</span>
+                        </li>
+                        #end
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%@include file="util/footer.jsp"%>
 </body>
 </html>

@@ -5,15 +5,8 @@ import org.seckill.dto.SeckillResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.lang.annotation.Annotation;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @RequestMapping
@@ -27,17 +20,25 @@ public class LoginController {
         System.out.println(user.getUserName());
         System.out.println(user.getPassword());
         String password = user.getPassword();
-        String compare = "123";
-        if (password.equals(compare)){
+        String passwordCompare = "123456";
+        String userNameCompare = "admin";
+        String username = user.getUserName();
+
+        if (password.equals(passwordCompare)&&username.equals(userNameCompare)){
             return new SeckillResult<Integer>(true,1);
         }else {
+            logger.info("登录失败");
             return new SeckillResult<Integer>(false, "用户名或密码错误");
         }
     }
 
-    @RequestMapping("/index")
+    @RequestMapping(value = "/index",method = RequestMethod.GET)
     public String index() {
-        return "articlemanage";
+        return "index";
     }
 
+    @RequestMapping(value = "/articlemanage",method = RequestMethod.GET)
+    public String articleManage() {
+        return "articlemanage";
+    }
 }
