@@ -15,7 +15,7 @@ import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping
 public class LoginController {
 
@@ -35,14 +35,9 @@ public class LoginController {
         }
     }
 
-
-    @CrossOrigin
-    @RequestMapping(value = "/crosslogin",method = RequestMethod.POST)
-    public SeckillResult<Integer> crossLogin(@RequestParam(value = "userName")String userName,
-                                                @RequestParam(value = "password")String password){
-        System.out.println(userName);
-        System.out.println(password);
-        return new SeckillResult<Integer>(true,1);
+    @RequestMapping("/index")
+    public String index() {
+        return "articlemanage";
     }
 
 }
