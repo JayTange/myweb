@@ -17,17 +17,12 @@
                 <th>操作</th>
             </tr>
             </thead>
-            <tbody>
-            #for(post : articles.rows)
             <tr>
                 <td>
                 </td>
                 <td>
-                    #if(post.status == 'publish')
                     <span class="label label-success">已发布</span>
-                    #elseif(post.status == 'draft')
                     <span class="label label-default">草稿</span>
-                    #end
                 </td>
                 <td>
                     <a href="/admin/article/"
@@ -36,17 +31,14 @@
                     <a href="javascript:void(0)" onclick="delPost(${post.cid});"
                        class="btn btn-danger btn-sm waves-effect waves-light m-b-5"><i
                             class="fa fa-trash-o"></i> <span>删除</span></a>
-                    #if(post.status == 'publish')
                     <a class="btn btn-warning btn-sm waves-effect waves-light m-b-5" href="${permalink(post)}"
                        target="_blank"><i
                             class="fa fa-rocket"></i> <span>预览</span></a>
-                    #end
                 </td>
             </tr>
             #end
             </tbody>
         </table>
-        #call pageAdminNav(articles)
     </div>
 </div>
 <script type="text/javascript">
