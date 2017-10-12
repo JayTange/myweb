@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <%@include file="util/header.jsp" %>
+<%@include file="common/tag.jsp"%>
 <div class="row">
     <div class="col-sm-12">
         <h4 class="page-title">文章管理</h4>
@@ -17,26 +17,31 @@
                 <th>操作</th>
             </tr>
             </thead>
-            <tr>
-                <td>
-                </td>
-                <td>
-                    <span class="label label-success">已发布</span>
-                    <span class="label label-default">草稿</span>
-                </td>
-                <td>
-                    <a href="/admin/article/"
-                       class="btn btn-primary btn-sm waves-effect waves-light m-b-5"><i
-                            class="fa fa-edit"></i> <span>编辑</span></a>
-                    <a href="javascript:void(0)" onclick="delPost(${post.cid});"
-                       class="btn btn-danger btn-sm waves-effect waves-light m-b-5"><i
-                            class="fa fa-trash-o"></i> <span>删除</span></a>
-                    <a class="btn btn-warning btn-sm waves-effect waves-light m-b-5" href="${permalink(post)}"
-                       target="_blank"><i
-                            class="fa fa-rocket"></i> <span>预览</span></a>
-                </td>
-            </tr>
-            #end
+            <tbody>
+            <c:forEach items="${list}" var="sk">
+                <tr>
+                    <td>
+                        <a href="/admin/article">${sk.title}</a>
+                    </td>
+                    <td>${sk.created}</td>
+                    <td>${sk.hits}</td>
+                    <td>${sk.categories}</td>
+                    <td>
+                        <span class="label label-success">${sk.status}</span>
+                    </td>
+                    <td>
+                        <a href="/admin/article/"
+                           class="btn btn-primary btn-sm waves-effect waves-light m-b-5"><i
+                                class="fa fa-edit"></i> <span>编辑</span></a>
+                        <a href="javascript:void(0)" onclick="delPost(${post.cid});"
+                           class="btn btn-danger btn-sm waves-effect waves-light m-b-5"><i
+                                class="fa fa-trash-o"></i> <span>删除</span></a>
+                        <a class="btn btn-warning btn-sm waves-effect waves-light m-b-5" href="#"
+                           target="_blank"><i
+                                class="fa fa-rocket"></i> <span>预览</span></a>
+                    </td>
+                </tr>
+            </c:forEach>
             </tbody>
         </table>
     </div>

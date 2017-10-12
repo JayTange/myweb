@@ -37,8 +37,4 @@ public class LoginController {
         return "index";
     }
 
-    @RequestMapping(value = "/articlemanage",method = RequestMethod.GET)
-    public String articleManage() {
-        return "articlemanage";
-    }
 }
