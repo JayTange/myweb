@@ -1,7 +1,7 @@
 package org.seckill.web;
 
 import org.seckill.dao.User;
-import org.seckill.dto.SeckillResult;
+import org.seckill.dto.WebResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -16,7 +16,7 @@ public class LoginController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
-    public SeckillResult<Integer> login(User user) {
+    public WebResult<Integer> login(User user) {
         System.out.println(user.getUserName());
         System.out.println(user.getPassword());
         String password = user.getPassword();
@@ -25,10 +25,10 @@ public class LoginController {
         String username = user.getUserName();
 
         if (password.equals(passwordCompare)&&username.equals(userNameCompare)){
-            return new SeckillResult<Integer>(true,1);
+            return new WebResult<Integer>(true,1);
         }else {
             logger.info("登录失败");
-            return new SeckillResult<Integer>(false, "用户名或密码错误");
+            return new WebResult<Integer>(false, "用户名或密码错误");
         }
     }
 

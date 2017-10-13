@@ -95,6 +95,6 @@ CREATE TABLE t_contents (
   allow_feed    INTEGER(1),
   PRIMARY KEY (cid)
 );
-
+INSERT INTO t_contents (title, slug, created, modified, content, author_id, type, status, tags, categories, hits, comments_num, allow_comment, allow_ping, allow_feed) VALUES ('test', 'about', 1487853610, 1487872488, '### Hello World这是我的关于页面### 当然还有其他具体你来写点什么吧', 1, 'page', 'publish', NULL, NULL, 0, 0, 1, 1, 1);
 
 -- SHOW CREATE TABLE seckill;#显示表的创建信息

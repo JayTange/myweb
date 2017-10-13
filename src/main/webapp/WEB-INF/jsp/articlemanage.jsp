@@ -5,6 +5,9 @@
     <div class="col-sm-12">
         <h4 class="page-title">文章管理</h4>
     </div>
+    <div class="pull-right">
+        <a href="/admin/page/new" class="btn btn-success waves-effect waves-light m-b-5">添加新页面</a>
+    </div>
     <div class="col-md-12">
         <table class="table table-striped table-bordered">
             <thead>

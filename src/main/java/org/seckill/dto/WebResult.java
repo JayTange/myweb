@@ -5,7 +5,7 @@ package org.seckill.dto;
  *
  * @param <T>
  */
-public class SeckillResult<T> {
+public class WebResult<T> {
 
     private boolean success;
 
@@ -13,12 +13,12 @@ public class SeckillResult<T> {
 
     private String error;
 
-    public SeckillResult(boolean success, T data) {
+    public WebResult(boolean success, T data) {
         this.success = success;
         this.data = data;
     }
 
-    public SeckillResult(boolean success, String error) {
+    public WebResult(boolean success, String error) {
         this.success = success;
         this.error = error;
     }
