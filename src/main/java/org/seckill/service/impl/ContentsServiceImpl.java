@@ -21,6 +21,6 @@ public class ContentsServiceImpl implements ContentsService {
 
     @Override
     public List<Contents> getContentsList() {
-        return contentsDao.queryAll(0,10);
+        return contentsDao.queryAll(0,20);
     }
 }
