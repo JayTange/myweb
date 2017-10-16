@@ -1,3 +1,4 @@
+<%@ page import="org.seckill.entity.Page" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="util/header.jsp" %>
 <%@include file="common/tag.jsp"%>
@@ -21,17 +22,22 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${list}" var="sk">
+            <c:forEach items="${page.rows}" var="sk">
                 <tr>
                     <td>
                         <a href="/admin/article">${sk.title}</a>
                     </td>
                     <td>${sk.created}</td>
                     <td>${sk.hits}</td>
-                    <td>${sk.categories}</td>
                     <td>
-                        <span class="label label-success">${sk.status}</span>
+                        <c:if test="${sk.status=='publish'}">
+                            <span class="label label-success">已发布</span>
+                        </c:if>
+                        <c:if test="${sk.status=='draft'}">
+                            <span class="label label-success">草稿</span>
+                        </c:if>
                     </td>
+                    <td>${sk.categories}</td>
                     <td>
                         <a href="/admin/article/"
                            class="btn btn-primary btn-sm waves-effect waves-light m-b-5"><i
@@ -48,26 +54,25 @@
             </tbody>
         </table>
         <ul class="pagination m-b-5 pull-right">
-            #if(pageInfo.hasPrevPage)
-            <li>
-                <a href="?page=${pageInfo.prevPage}" aria-label="Previous">
-                    <i class="fa fa-angle-left"></i>&nbsp;上一页
-                </a>
-            </li>
-            #end
+            <c:if test="${page.hasPrevPage}" var ="result">
+                <li>
+                    <a href="?page=${page.prevPage}" aria-label="Previous">
+                        <i class="fa fa-angle-left"></i>&nbsp;上一页
+                    </a>
+                </li>
+            </c:if>
+            <c:forEach items="${page.navPageNums}" var="nav">
+            <li class="active"><a href="?page=${nav}">${nav}</a></li>
+            </c:forEach>
 
-            #for(nav : pageInfo.navPageNums)
-            <li #if(nav== pageInfo.pageNum) class="active" #end><a href="?page=${nav}">${nav}</a></li>
-            #end
-
-            #if(pageInfo.hasNextPage)
+            <c:if test="${page.hasPrevPage}" var ="result">
             <li>
-                <a href="?page=${pageInfo.nextPage}" aria-label="Next">
+                <a href="/articlemanage/${page.nextPage}" aria-label="Next">
                     下一页&nbsp;<i class="fa fa-angle-right"></i>
                 </a>
             </li>
-            #end
-            <li><span>共${pageInfo.totalPages}页</span></li>
+            </c:if>
+            <li><span>共${page.totalPages}页</span></li>
         </ul>
     </div>
 </div>
