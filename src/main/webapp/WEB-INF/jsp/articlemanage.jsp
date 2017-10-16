@@ -1,4 +1,4 @@
-<%@ page import="org.seckill.entity.Page" %>
+<%@ page import="org.seckill.dto.Page" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="util/header.jsp" %>
 <%@include file="common/tag.jsp"%>
@@ -56,13 +56,13 @@
         <ul class="pagination m-b-5 pull-right">
             <c:if test="${page.hasPrevPage}" var ="result">
                 <li>
-                    <a href="?page=${page.prevPage}" aria-label="Previous">
+                    <a href="/articlemanage/${page.prevPage}" aria-label="Previous">
                         <i class="fa fa-angle-left"></i>&nbsp;上一页
                     </a>
                 </li>
             </c:if>
             <c:forEach items="${page.navPageNums}" var="nav">
-            <li class="active"><a href="?page=${nav}">${nav}</a></li>
+            <li class="active"><a href="/articlemanage/${nav}">${nav}</a></li>
             </c:forEach>
 
             <c:if test="${page.hasPrevPage}" var ="result">

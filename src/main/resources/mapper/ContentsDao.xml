@@ -8,6 +8,7 @@
         SELECT *
         FROM t_contents
         ORDER BY cid
-        LIMIT #{offset}, #{limit}
+        LIMIT #{limit}
+        OFFSET #{offset}
     </select>
 </mapper>

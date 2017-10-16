@@ -1,7 +1,7 @@
 package org.seckill.web;
 
+import org.seckill.dto.Page;
 import org.seckill.entity.Contents;
-import org.seckill.entity.Page;
 import org.seckill.service.ContentsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,9 +24,15 @@ public class ArticleController {
 
     @RequestMapping(value = "/articlemanage/{pageId}",method = RequestMethod.GET)
     public String articleManage(@PathVariable("pageId")Integer pageId,Model model) {
-        List<Contents> list = contentsService.getContentsList(pageId,10);
-        Page<Contents> page = new Page<Contents>(20,pageId,10,list);
+        List<Contents> list = contentsService.getContentsList(10,(pageId+1)*10);
+        //TODO 获取总数
+        Page<Contents> page = new Page<Contents>(20,pageId+1,10,list);
         model.addAttribute("page",page);
         return "articlemanage";
+    }
+
+    @RequestMapping(value = "articlemanage",method = RequestMethod.GET)
+    public String indexArcticle(Model model){
+        return "redirect:/articlemanage/0";
     }
 }

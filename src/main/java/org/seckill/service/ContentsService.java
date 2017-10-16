@@ -10,5 +10,5 @@ public interface ContentsService {
      *
      * @return
      */
-    List<Contents> getContentsList(Integer offset,Integer limit);
+    List<Contents> getContentsList(Integer limit,Integer offset);
 }

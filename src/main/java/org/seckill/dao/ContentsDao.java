@@ -13,6 +13,6 @@ public interface ContentsDao {
      * @param limit
      * @return
      */
-    List<Contents> queryAll(@Param("offset") int offset, @Param("limit") int limit);
+    List<Contents> queryAll(@Param("limit") int limit, @Param("offset") int offset);
 
 }

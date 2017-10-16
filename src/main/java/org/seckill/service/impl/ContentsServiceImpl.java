@@ -20,7 +20,7 @@ public class ContentsServiceImpl implements ContentsService {
     private ContentsDao contentsDao;
 
     @Override
-    public List<Contents> getContentsList(Integer offset,Integer limit) {
-        return contentsDao.queryAll(0,10);
+    public List<Contents> getContentsList(Integer limit,Integer offest) {
+        return contentsDao.queryAll(limit,offest);
     }
 }

@@ -20,7 +20,7 @@ public class ContentsDaoTest {
     private ContentsDao contentsDao;
     @Test
     public void queryAll() throws Exception {
-        List<Contents>list = contentsDao.queryAll(0,100);
+        List<Contents>list = contentsDao.queryAll(10,20);
         for(Contents contents:list){
             System.out.println(contents);
         }

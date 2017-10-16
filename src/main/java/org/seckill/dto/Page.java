@@ -1,4 +1,4 @@
-package org.seckill.entity;
+package org.seckill.dto;
 
 import java.util.Arrays;
 import java.util.List;
@@ -32,7 +32,7 @@ public class Page<T> {
 
     public Page(){
     }
-    public Page(long total, int page, int limit,List<T> rows) {
+    public Page(long total, int page, int limit, List<T> rows) {
         this.init(total, page, limit,rows);
     }
     private void init(long total, int pageNum, int limit,List<T>rows) {
