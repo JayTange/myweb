@@ -45,12 +45,13 @@ public class ArticleController {
         return "redirect:/articlemanage/1";
     }
 
-    @RequestMapping(value = "/article/delete",method = RequestMethod.POST)
+    @RequestMapping(value = "/article/delete/{cid}",method = RequestMethod.POST)
     @ResponseBody
-    public WebResult deleteContent(@RequestBody Map<String,String> map){
+    public WebResult deleteContent(@PathVariable("cid")Integer cid,Model model){
         try{
-            System.out.println("delete接受参数");
-            System.out.println(map.get("cid"));
+
+            contentsService.deleteContent(cid);
+            logger.info("删除文章+cidw为："+cid);
             return new WebResult(true);
         }catch (Exception e){
             logger.error(e.getMessage());

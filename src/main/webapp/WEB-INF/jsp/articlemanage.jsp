@@ -83,11 +83,12 @@
         var data = {
             "cid":cid
         };
+        var url = "/article/delete/"+cid;
         tale.alertConfirm({
             title:'确定删除该文章吗?',
             then: function () {
                 tale.post({
-                    url : '/article/delete',
+                    url : url,
                     data: data,
                     success: function (result) {
                         if(result && result.success){
