@@ -26,4 +26,10 @@ public class ContentsDaoTest {
         }
     }
 
+    @Test
+    public void getCount()throws Exception{
+        Integer count = contentsDao.getCount();
+        System.err.println("记录总数量为："+count);
+    }
+
 }

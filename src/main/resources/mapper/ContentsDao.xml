@@ -11,4 +11,8 @@
         LIMIT #{limit}
         OFFSET #{offset}
     </select>
+
+    <select id="getCount" resultType="Integer">
+        select count(cid) from t_contents;
+    </select>
 </mapper>

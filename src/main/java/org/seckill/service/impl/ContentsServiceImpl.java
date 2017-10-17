@@ -20,6 +20,11 @@ public class ContentsServiceImpl implements ContentsService {
     private ContentsDao contentsDao;
 
     @Override
+    public Integer getContentsCount() {
+        return contentsDao.getCount();
+    }
+
+    @Override
     public List<Contents> getContentsList(Integer limit,Integer offest) {
         return contentsDao.queryAll(limit,offest);
     }

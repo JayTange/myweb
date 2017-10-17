@@ -30,15 +30,17 @@ public class Page<T> {
     private int navPages = 8;
     private int[] navPageNums;
 
-    public Page(){
+    public Page() {
     }
+
     public Page(long total, int page, int limit, List<T> rows) {
-        this.init(total, page, limit,rows);
+        this.init(total, page, limit, rows);
     }
-    private void init(long total, int pageNum, int limit,List<T>rows) {
+
+    private void init(long total, int pageNum, int limit, List<T> rows) {
         this.totalRows = total;
         this.limit = limit;
-        this.totalPages = (int)((this.totalRows - 1L) / (long)this.limit + 1L);
+        this.totalPages = (int) ((this.totalRows - 1L) / (long) this.limit + 1L);
         if (pageNum < 1) {
             this.pageNum = 1;
         } else if (pageNum > this.totalPages) {
@@ -51,12 +53,15 @@ public class Page<T> {
         this.judgePageBoudary();
     }
 
+    /**
+     * 根据totalpage，将页面划分成1234的形式
+     */
     private void calcNavigatePageNumbers() {
         int i;
         if (this.totalPages <= this.navPages) {
             this.navPageNums = new int[this.totalPages];
 
-            for(i = 0; i < this.totalPages; ++i) {
+            for (i = 0; i < this.totalPages; ++i) {
                 this.navPageNums[i] = i + 1;
             }
         } else {
@@ -66,23 +71,26 @@ public class Page<T> {
             if (i < 1) {
                 i = 1;
 
-                for(i = 0; i < this.navPages; ++i) {
+                for (i = 0; i < this.navPages; ++i) {
                     this.navPageNums[i] = i++;
                 }
             } else if (endNum > this.totalPages) {
                 endNum = this.totalPages;
 
-                for(i = this.navPages - 1; i >= 0; --i) {
+                for (i = this.navPages - 1; i >= 0; --i) {
                     this.navPageNums[i] = endNum--;
                 }
             } else {
-                for(i = 0; i < this.navPages; ++i) {
+                for (i = 0; i < this.navPages; ++i) {
                     this.navPageNums[i] = i++;
                 }
             }
         }
     }
 
+    /**
+     * 得到当前页面的上一页与下一页
+     */
     private void judgePageBoudary() {
         this.isFirstPage = this.pageNum == 1;
         this.isLastPage = this.pageNum == this.totalPages && this.pageNum != 1;
@@ -208,7 +216,7 @@ public class Page<T> {
         } else if (!(o instanceof Page)) {
             return false;
         } else {
-            Page<?> other = (Page)o;
+            Page<?> other = (Page) o;
             if (!other.canEqual(this)) {
                 return false;
             } else if (this.getPageNum() != other.getPageNum()) {
@@ -224,7 +232,8 @@ public class Page<T> {
             } else if (this.getTotalRows() != other.getTotalRows()) {
                 return false;
             } else {
-                label62: {
+                label62:
+                {
                     Object this$rows = this.getRows();
                     Object other$rows = other.getRows();
                     if (this$rows == null) {
@@ -268,7 +277,7 @@ public class Page<T> {
         result = result * 59 + this.getNextPage();
         result = result * 59 + this.getTotalPages();
         long $totalRows = this.getTotalRows();
-        result = result * 59 + (int)($totalRows >>> 32 ^ $totalRows);
+        result = result * 59 + (int) ($totalRows >>> 32 ^ $totalRows);
         Object $rows = this.getRows();
         result = result * 59 + ($rows == null ? 43 : $rows.hashCode());
         result = result * 59 + (this.isFirstPage() ? 79 : 97);

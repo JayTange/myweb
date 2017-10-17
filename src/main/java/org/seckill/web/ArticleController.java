@@ -22,17 +22,20 @@ public class ArticleController {
     @Autowired
     private ContentsService contentsService;
 
-    @RequestMapping(value = "/articlemanage/{pageId}",method = RequestMethod.GET)
-    public String articleManage(@PathVariable("pageId")Integer pageId,Model model) {
-        List<Contents> list = contentsService.getContentsList(10,(pageId+1)*10);
-        //TODO 获取总数
-        Page<Contents> page = new Page<Contents>(20,pageId+1,10,list);
-        model.addAttribute("page",page);
+    @RequestMapping(value = "/articlemanage/{pageId}", method = RequestMethod.GET)
+    public String articleManage(@PathVariable("pageId") Integer pageId, Model model) {
+        //获取文章信息
+        List<Contents> list = contentsService.getContentsList(10, (pageId - 1) * 10);
+        // 获取文章总数
+        Integer total = contentsService.getContentsCount();
+        // 根据total和当前page，计算出页数
+        Page<Contents> page = new Page<Contents>(total, pageId, 10, list);
+        model.addAttribute("page", page);
         return "articlemanage";
     }
 
-    @RequestMapping(value = "articlemanage",method = RequestMethod.GET)
-    public String indexArcticle(Model model){
-        return "redirect:/articlemanage/0";
+    @RequestMapping(value = "articlemanage", method = RequestMethod.GET)
+    public String indexArcticle(Model model) {
+        return "redirect:/articlemanage/1";
     }
 }

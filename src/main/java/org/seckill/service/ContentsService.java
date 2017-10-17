@@ -11,4 +11,10 @@ public interface ContentsService {
      * @return
      */
     List<Contents> getContentsList(Integer limit,Integer offset);
+
+    /**
+     * 获取文章总数
+     * @return
+     */
+    Integer getContentsCount();
 }
