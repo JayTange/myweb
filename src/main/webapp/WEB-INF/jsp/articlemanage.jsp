@@ -78,13 +78,17 @@
 </div>
 <script type="text/javascript">
     var tale = new $.tale();
+
     function delPost(cid) {
+        var data = {
+            "cid":cid
+        };
         tale.alertConfirm({
             title:'确定删除该文章吗?',
             then: function () {
                 tale.post({
                     url : '/article/delete',
-                    data: {cid: cid},
+                    data: data,
                     success: function (result) {
                         if(result && result.success){
                             tale.alertOkAndReload('文章删除成功');

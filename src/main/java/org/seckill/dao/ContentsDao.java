@@ -23,4 +23,10 @@ public interface ContentsDao {
      * @return
      */
     Integer getCount();
+
+    /**
+     * 删除文章
+     * @param cid
+     */
+    void deleteContent(Integer cid);
 }

@@ -17,4 +17,9 @@ public interface ContentsService {
      * @return
      */
     Integer getContentsCount();
+
+    /**
+     * 删除文章
+     */
+    void deleteContent(Integer cid);
 }

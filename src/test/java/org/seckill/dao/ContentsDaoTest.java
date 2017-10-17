@@ -32,4 +32,10 @@ public class ContentsDaoTest {
         System.err.println("记录总数量为："+count);
     }
 
+    @Test
+    public void delete()throws  Exception{
+        int cid = 1;
+        contentsDao.deleteContent(cid);
+    }
+
 }

@@ -18,6 +18,10 @@ public class WebResult<T> {
         this.data = data;
     }
 
+    public WebResult(boolean success){
+        this.success = success;
+    }
+
     public WebResult(boolean success, String error) {
         this.success = success;
         this.error = error;

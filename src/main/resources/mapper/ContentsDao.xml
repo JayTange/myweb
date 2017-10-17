@@ -15,4 +15,8 @@
     <select id="getCount" resultType="Integer">
         select count(cid) from t_contents;
     </select>
+
+    <delete id="deleteContent">
+        DELETE FROM t_contents WHERE cid = #{cid}
+    </delete>
 </mapper>

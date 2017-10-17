@@ -28,4 +28,9 @@ public class ContentsServiceImpl implements ContentsService {
     public List<Contents> getContentsList(Integer limit,Integer offest) {
         return contentsDao.queryAll(limit,offest);
     }
+
+    @Override
+    public void deleteContent(Integer cid) {
+        contentsDao.deleteContent(cid);
+    }
 }
