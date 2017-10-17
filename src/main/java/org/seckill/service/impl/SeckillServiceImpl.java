@@ -40,14 +40,17 @@ public class SeckillServiceImpl implements SecKillService {
     @Autowired
     private RedisDao redisDao;
 
+    @Override
     public List<SecKill> getSeckilList() {
         return secKillDao.queryAll(0, 4);
     }
 
+    @Override
     public SecKill getById(long seckillId) {
         return secKillDao.queryById(seckillId);
     }
 
+    @Override
     public Exposer exportSeckillUrl(long seckillId) {
 
         //秒杀优化点,通过redis缓存, 超时的基础上维护一致性

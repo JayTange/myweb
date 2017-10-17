@@ -210,6 +210,7 @@ public class Page<T> {
         this.navPageNums = navPageNums;
     }
 
+    @Override
     public boolean equals(Object o) {
         if (o == this) {
             return true;
@@ -234,13 +235,13 @@ public class Page<T> {
             } else {
                 label62:
                 {
-                    Object this$rows = this.getRows();
-                    Object other$rows = other.getRows();
-                    if (this$rows == null) {
-                        if (other$rows == null) {
+                    Object thisRows = this.getRows();
+                    Object otherRows = other.getRows();
+                    if (thisRows == null) {
+                        if (otherRows == null) {
                             break label62;
                         }
-                    } else if (this$rows.equals(other$rows)) {
+                    } else if (thisRows.equals(otherRows)) {
                         break label62;
                     }
 
@@ -268,18 +269,18 @@ public class Page<T> {
         return other instanceof Page;
     }
 
+    @Override
     public int hashCode() {
-        int PRIME = 1;
         int result = 1;
         result = result * 59 + this.getPageNum();
         result = result * 59 + this.getLimit();
         result = result * 59 + this.getPrevPage();
         result = result * 59 + this.getNextPage();
         result = result * 59 + this.getTotalPages();
-        long $totalRows = this.getTotalRows();
-        result = result * 59 + (int) ($totalRows >>> 32 ^ $totalRows);
-        Object $rows = this.getRows();
-        result = result * 59 + ($rows == null ? 43 : $rows.hashCode());
+        long totalRows = this.getTotalRows();
+        result = result * 59 + (int) (totalRows >>> 32 ^ totalRows);
+        Object rows = this.getRows();
+        result = result * 59 + (rows == null ? 43 : rows.hashCode());
         result = result * 59 + (this.isFirstPage() ? 79 : 97);
         result = result * 59 + (this.isLastPage() ? 79 : 97);
         result = result * 59 + (this.isHasPrevPage() ? 79 : 97);
@@ -289,6 +290,7 @@ public class Page<T> {
         return result;
     }
 
+    @Override
     public String toString() {
         return "Page(pageNum=" + this.getPageNum() + ", limit=" + this.getLimit() + ", prevPage=" + this.getPrevPage() + ", nextPage=" + this.getNextPage() + ", totalPages=" + this.getTotalPages() + ", totalRows=" + this.getTotalRows() + ", rows=" + this.getRows() + ", isFirstPage=" + this.isFirstPage() + ", isLastPage=" + this.isLastPage() + ", hasPrevPage=" + this.isHasPrevPage() + ", hasNextPage=" + this.isHasNextPage() + ", navPages=" + this.getNavPages() + ", navPageNums=" + Arrays.toString(this.getNavPageNums()) + ")";
     }
