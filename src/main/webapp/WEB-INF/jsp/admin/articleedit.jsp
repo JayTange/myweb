@@ -136,13 +136,70 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <h4 class="page-title">
-                            <c:if test="${content == null}">
+                            <c:if test="${contents == null}">
                                 <span>编辑文章</span>
                             </c:if>
-                            <c:if test="${content != null}">
+                            <c:if test="${contents!= null}">
                                 <span>发布文章</span>
                             </c:if>
                         </h4>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <form id="articleForm">
+                            <div class="form-group col-md-6" style="padding: 0 10px 0 0;">
+                                <input class="form-control" placeholder="请输入文章标题（必须）" name="title" required
+                                       value="${contents.title}"/>
+                            </div>
+
+                            <div class="form-group col-md-6" style="padding: 0 0 0 10px;">
+                                <input class="form-control" placeholder="自定义访问路径，如：my-first-article  默认为文章id"
+                                       name="slug"
+                                       value="${contents.slug}"/>
+                            </div>
+
+                            <div class="form-group col-md-6" style="padding: 0 10px 0 0;">
+                                <input name="tags" id="tags" type="text" class="form-control" placeholder="请填写文章标签"
+                                       value="${contents.tags}"/>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <select id="multiple-sel" class="select2 form-control" multiple="multiple"
+                                        data-placeholder="请选择分类...">
+                                    <c:if test="${categories == null}">
+                                        <option value="默认分类" selected>默认分类</option>
+                                    </c:if>
+
+                                    <c:forEach items="${categories}" var="ca">
+                                        <option value="${ca.name}" #if(null !=contents && exist_cat(c,
+                                                contents.categories)) selected #end>
+                                                ${ca.name}
+                                        </option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+
+                            <div class="clearfix"></div>
+                            <div class="form-group col-xs-12">
+                                <div class="pull-right">
+                                    　 <c:choose>
+                                    <c:when test="${contents!=null && contents.fmtType=='html'}">
+                                        <a id="switch-btn" href="javascript:void(0)"
+                                           class="btn btn-purple btn-sm waves-effect waves-light switch-editor">
+                                            切换为Markdown编辑器
+                                        </a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <a id="switch-btn" href="javascript:void(0)"
+                                           class="btn btn-purple btn-sm waves-effect waves-light switch-editor">
+                                            切换为富文本编辑器
+                                        </a>
+                                    </c:otherwise>
+                                </c:choose>
+
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <footer class="footer text-right">
