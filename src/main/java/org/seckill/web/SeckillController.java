@@ -32,7 +32,7 @@ public class SeckillController {
         List<SecKill> list = secKillService.getSeckilList();
         model.addAttribute("list", list);
         // list.jsp+model = ModelAndView
-        return "list";//WEB-INF/JSP/list.jsp
+        return "admin/list";//WEB-INF/JSP/list.jsp
 
     }
 
@@ -46,7 +46,7 @@ public class SeckillController {
             return "forward:/seckill/list";
         }
         model.addAttribute("seckill", secKill);
-        return "detail";
+        return "admin/detail";
     }
 
     @RequestMapping(value = "/{seckillId}/exposer", method = RequestMethod.POST,

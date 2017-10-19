@@ -81,11 +81,6 @@
                     </li>
 
                     <li class="active">
-                        <a href="/admin/page" class="waves-effect active #end"><i class="fa fa-file-text"
-                                                                                  aria-hidden="true"></i><span> 页面管理 </span></a>
-                    </li>
-
-                    <li class="active">
                         <a href="/admin/attach" class="waves-effect active #end"><i class="fa fa-cloud-upload"
                                                                                     aria-hidden="true"></i><span> 文件管理 </span></a>
                     </li>

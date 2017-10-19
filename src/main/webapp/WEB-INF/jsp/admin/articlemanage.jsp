@@ -1,7 +1,7 @@
 <%@ page import="org.seckill.dto.Page" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@include file="util/header.jsp" %>
-<%@include file="common/tag.jsp"%>
+<%@include file="../util/header.jsp" %>
+<%@include file="../common/tag.jsp"%>
 <div class="row">
     <div class="col-sm-12">
         <h4 class="page-title">文章管理</h4>
@@ -83,7 +83,7 @@
         var data = {
             "cid":cid
         };
-        var url = "/article/delete/"+cid;
+        var url = "/articlemanage/delete/"+cid;
         tale.alertConfirm({
             title:'确定删除该文章吗?',
             then: function () {
@@ -102,6 +102,6 @@
         });
     }
 </script>
-<%@include file="util/footer.jsp"%>
+<%@include file="../util/footer.jsp"%>
 </body>
 </html>

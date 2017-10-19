@@ -12,10 +12,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
+/**
+ * 文章管理
+ */
 @Controller
-@RequestMapping
+@RequestMapping(value = "/articlemanage")
 public class ArticleController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -24,11 +26,12 @@ public class ArticleController {
 
     /**
      * 显示文章列表
+     *
      * @param pageId
      * @param model
      * @return
      */
-    @RequestMapping(value = "/articlemanage/{pageId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{pageId}", method = RequestMethod.GET)
     public String articleManage(@PathVariable("pageId") Integer pageId, Model model) {
         //获取文章信息
         List<Contents> list = contentsService.getContentsList(10, (pageId - 1) * 10);
@@ -37,26 +40,37 @@ public class ArticleController {
         // 根据total和当前page，计算出页数
         Page<Contents> page = new Page<Contents>(total, pageId, 10, list);
         model.addAttribute("page", page);
-        return "articlemanage";
+        return "admin/articlemanage";
     }
 
-    @RequestMapping(value = "articlemanage", method = RequestMethod.GET)
+    /**
+     * 初次加载默认页数为1
+     *
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public String indexArcticle(Model model) {
         return "redirect:/articlemanage/1";
     }
 
-    @RequestMapping(value = "/article/delete/{cid}",method = RequestMethod.POST)
+    /**
+     * 删除文章
+     *
+     * @param cid
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/delete/{cid}", method = RequestMethod.POST)
     @ResponseBody
-    public WebResult deleteContent(@PathVariable("cid")Integer cid,Model model){
-        try{
-
+    public WebResult deleteContent(@PathVariable("cid") Integer cid, Model model) {
+        try {
             contentsService.deleteContent(cid);
-            logger.info("删除文章+cidw为："+cid);
+            logger.info("删除文章+cidw为：" + cid);
             return new WebResult(true);
-        }catch (Exception e){
+        } catch (Exception e) {
             logger.error(e.getMessage());
-            return new WebResult(false,"删除文章失败");
+            return new WebResult(false, "删除文章失败");
         }
-
     }
 }
