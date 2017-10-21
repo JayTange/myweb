@@ -196,8 +196,87 @@
                                         </a>
                                     </c:otherwise>
                                 </c:choose>
-
                                 </div>
+                                <
+                            </div>
+                            <div id="md-container" class="form-group col-md-12">
+                                <textarea id="md-editor"
+                                          class="#if(null != contents && contents.fmtType != 'html') hide #end">${contents.content ?! ''}</textarea>
+                            </div>
+
+                            <div id="html-container" class="form-group col-md-12">
+                                <div class="summernote">
+                                    #if(null != contents && contents.fmtType == 'html')
+                                    ${contents.content ?! ''}
+                                    #end
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-3 col-sm-4">
+                                <label class="col-sm-4">开启评论</label>
+                                <div class="col-sm-8">
+                                    <div class="toggle toggle-success allow-${contents.allowComment ?! true}"
+                                         onclick="allow_comment(this);" on="${contents.allowComment ?! true}"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-3 col-sm-4">
+                                <label class="col-sm-4">允许Ping</label>
+                                <div class="col-sm-8">
+                                    <div class="toggle toggle-success allow-${contents.allowPing ?! true}"
+                                         onclick="allow_ping(this);" on="${contents.allowPing ?! true}"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-3 col-sm-4">
+                                <label class="col-sm-4">允许订阅</label>
+                                <div class="col-sm-8">
+                                    <div class="toggle toggle-success allow-${contents.allowFeed ?! true}"
+                                         onclick="allow_feed(this);" on="${contents.allowFeed ?! true}"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label class="col-sm-5">添加缩略图</label>
+                                <div class="col-sm-7">
+                                    <div id="thumb-toggle" class="toggle toggle-success" on="false"
+                                         thumb_url="${contents.thumbImg ?! ''}" onclick="add_thumbimg(this);"></div>
+                                </div>
+                            </div>
+
+                            <div id="dropzone-container" class="form-group col-md-12 hide">
+                                <div class="dropzone dropzone-previews" id="dropzone">
+                                    <div class="dz-message">
+                                        <p>可以为你的文章添加一张缩略图 ;)</p>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="thumbImg" id="thumbImg"/>
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                            <div class="text-right">
+                                <a class="btn btn-default waves-effect waves-light" href="/admin/article">返回列表</a>
+                                <button type="button" class="btn btn-primary waves-effect waves-light"
+                                        onclick="subArticle('publish');">
+                                    保存文章
+                                </button>
+                                <button type="button" class="btn btn-warning waves-effect waves-light"
+                                        onclick="subArticle('draft');">
+                                    存为草稿
+                                </button>
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                            <div class="text-right">
+                                <a class="btn btn-default waves-effect waves-light" href="/admin/article">返回列表</a>
+                                <button type="button" class="btn btn-primary waves-effect waves-light" onclick="subArticle('publish');">
+                                    保存文章
+                                </button>
+                                <button type="button" class="btn btn-warning waves-effect waves-light" onclick="subArticle('draft');">
+                                    存为草稿
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -209,5 +288,17 @@
         </div>
     </div>
 </div>
+<script src="//tale-static.b0.upaiyun.com/mditor/js/mditor.min.js"></script>
+<script src="//cdn.bootcss.com/wysihtml5/0.3.0/wysihtml5.min.js"></script>
+<script src="//cdn.bootcss.com/summernote/0.8.2/summernote.min.js"></script>
+<script src="//cdn.bootcss.com/summernote/0.8.2/lang/summernote-zh-CN.min.js"></script>
+<script src="//cdn.bootcss.com/multi-select/0.9.12/js/jquery.multi-select.min.js"></script>
+<script src="//cdn.bootcss.com/select2/3.4.8/select2.min.js"></script>
+<script src="//cdn.bootcss.com/jquery-toggles/2.0.4/toggles.min.js"></script>
+<script src="//cdn.bootcss.com/dropzone/4.3.0/min/dropzone.min.js"></script>
+<script src="//cdn.bootcss.com/to-markdown/3.1.0/to-markdown.min.js"></script>
+<script src="/resource/plugin/tagsinput/jquery.tagsinput.min.js"></script>
+<script src="/resource/plugin/jquery-multi-select/jquery.quicksearch.js"></script>
+<script src="/resource/js/article.js" type="text/javascript"></script>
 </body>
 </html>

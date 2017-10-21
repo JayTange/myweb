@@ -73,4 +73,9 @@ public class ArticleController {
             return new WebResult(false, "删除文章失败");
         }
     }
+
+    public String newArticle(Model model){
+
+        return "/articleedit";
+    }
 }
