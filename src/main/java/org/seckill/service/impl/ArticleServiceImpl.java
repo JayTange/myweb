@@ -4,6 +4,7 @@ import org.seckill.dao.MetasDao;
 import org.seckill.entity.Metas;
 import org.seckill.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
  * 文章服务实现类
  * @author tnagj
  */
+@Service
 public class ArticleServiceImpl implements ArticleService{
 
     @Autowired

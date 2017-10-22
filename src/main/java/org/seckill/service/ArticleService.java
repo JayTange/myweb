@@ -1,6 +1,7 @@
 package org.seckill.service;
 
 import org.seckill.entity.Metas;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 

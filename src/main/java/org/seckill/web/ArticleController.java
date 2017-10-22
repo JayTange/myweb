@@ -3,6 +3,8 @@ package org.seckill.web;
 import org.seckill.dto.Page;
 import org.seckill.dto.WebResult;
 import org.seckill.entity.Contents;
+import org.seckill.entity.Metas;
+import org.seckill.service.ArticleService;
 import org.seckill.service.ContentsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +26,8 @@ public class ArticleController {
     @Autowired
     private ContentsService contentsService;
 
+    @Autowired
+    private ArticleService articleService;
     /**
      * 显示文章列表
      *
@@ -74,8 +78,10 @@ public class ArticleController {
         }
     }
 
+    @RequestMapping(value = "/publish",method = RequestMethod.GET)
     public String newArticle(Model model){
-
-        return "/articleedit";
+        List<Metas> categories = articleService.getArticleType("category");
+        model.addAttribute("categories",categories);
+        return "admin/articleedit";
     }
 }

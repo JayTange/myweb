@@ -30,7 +30,7 @@
                     </a>
                 </div>
                 <div class="pull-left" style="padding-left: 10px;">
-                    <span style="font-size: 28px; color: #2f353f; line-height: 50px;">Welcome</span>
+                    <span style="font-size: 28px; color: #2f353f; line-height: 50px;">Win</span>
                 </div>
             </div>
         </div>
@@ -72,7 +72,7 @@
                                                                       aria-hidden="true"></i><span> 仪表盘 </span></a>
                     </li>
                     <li class="active">
-                        <a href="/admin/article/publish" class="waves-effect active #end"><i
+                        <a href="/articlemanage/publish" class="waves-effect active #end"><i
                                 class="fa fa-pencil-square-o" aria-hidden="true"></i><span> 发布文章 </span></a>
                     </li>
                     <li class="active">
