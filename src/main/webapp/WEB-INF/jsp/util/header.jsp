@@ -86,20 +86,20 @@
                     </li>
 
                     <li class="has_sub">
-                        <a href="javascript:void(1)" class="waves-effect  active subdrop #end"><i
+                        <a href="javascript:void(0)" class="waves-effect  active subdrop"><i
                                 class="fa fa-cubes"></i><span> 其他管理 </span><span class="pull-right"><i
                                 class="fa fa-plus"></i></span></a>
                         <ul class="list-unstyled">
                             <li class="active">
-                                <a href="/admin/comments" class="waves-effect  active #end"><i class="fa fa-comments"
+                                <a href="/admin/comments" class="waves-effect  active"><i class="fa fa-comments"
                                                                                                aria-hidden="true"></i><span> 评论管理 </span></a>
                             </li>
                             <li class="active">
-                                <a href="/admin/category" class="waves-effect active #end"><i class="fa fa-tags"
+                                <a href="/admin/category" class="waves-effect active"><i class="fa fa-tags"
                                                                                               aria-hidden="true"></i><span> 分类/标签 </span></a>
                             </li>
                             <li class="active">
-                                <a href="/admin/template" class="waves-effect active #end"><i class="fa fa-hashtag"></i><span> 编辑模板 </span></a>
+                                <a href="/admin/template" class="waves-effect active"><i class="fa fa-hashtag"></i><span> 编辑模板 </span></a>
                             </li>
                         </ul>
                     </li>
