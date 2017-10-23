@@ -150,13 +150,13 @@
                                 <textarea id="md-editor">${contents.content}</textarea>
             </div>
 
-            <c:if test="${contents.fmtType=='html'}">
+
                 <div id="html-container" class="form-group col-md-12">
                     <div class="summernote">
                             ${contents.content}
                     </div>
                 </div>
-            </c:if>
+
 
             <div class="form-group col-md-3 col-sm-4">
                 <label class="col-sm-4">开启评论</label>
@@ -213,17 +213,6 @@
                 </button>
             </div>
 
-            <div class="clearfix"></div>
-
-            <div class="text-right">
-                <a class="btn btn-default waves-effect waves-light" href="/admin/article">返回列表</a>
-                <button type="button" class="btn btn-primary waves-effect waves-light" onclick="subArticle('publish');">
-                    保存文章
-                </button>
-                <button type="button" class="btn btn-warning waves-effect waves-light" onclick="subArticle('draft');">
-                    存为草稿
-                </button>
-            </div>
         </form>
     </div>
 </div>
