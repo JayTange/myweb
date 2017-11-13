@@ -1,321 +1,317 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.kl</groupId>
-  <artifactId>senkill</artifactId>
-  <packaging>war</packaging>
-  <version>1.0-SNAPSHOT</version>
-  <name>senkill Maven Webapp</name>
-  <url>http://maven.apache.org</url>
-  <dependencies>
-    <dependency>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.kl</groupId>
+    <artifactId>senkill</artifactId>
+    <packaging>war</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>senkill Maven Webapp</name>
+    <url>http://maven.apache.org</url>
+    <dependencies>
+        <dependency>
 
-      <!--3.0的junit是使用编程的方式来进行测试，而junit4是使用注解的方式来运行junit-->
+            <!--3.0的junit是使用编程的方式来进行测试，而junit4是使用注解的方式来运行junit-->
 
-      <groupId>junit</groupId>
+            <groupId>junit</groupId>
 
-      <artifactId>junit</artifactId>
+            <artifactId>junit</artifactId>
 
-      <version>4.11</version>
+            <version>4.11</version>
 
-      <scope>test</scope>
+            <scope>test</scope>
 
-    </dependency>
+        </dependency>
 
 
+        <!--补全项目依赖-->
 
+        <!--1.日志 java日志有:slf4j,log4j,logback,common-logging
 
+            slf4j:是规范/接口
 
-    <!--补全项目依赖-->
+            日志实现:log4j,logback,common-logging
 
-    <!--1.日志 java日志有:slf4j,log4j,logback,common-logging
+            使用:slf4j+logback
 
-        slf4j:是规范/接口
+        -->
 
-        日志实现:log4j,logback,common-logging
+        <dependency>
 
-        使用:slf4j+logback
+            <groupId>org.slf4j</groupId>
 
-    -->
+            <artifactId>slf4j-api</artifactId>
 
-    <dependency>
+            <version>1.7.12</version>
 
-      <groupId>org.slf4j</groupId>
+        </dependency>
 
-      <artifactId>slf4j-api</artifactId>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.5</version>
+        </dependency>
 
-      <version>1.7.12</version>
 
-    </dependency>
+        <dependency>
 
-    <dependency>
+            <groupId>ch.qos.logback</groupId>
 
-      <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
 
-      <artifactId>logback-core</artifactId>
+            <version>1.1.1</version>
 
-      <version>1.1.1</version>
+        </dependency>
 
-    </dependency>
+        <!--实现slf4j接口并整合-->
 
-    <!--实现slf4j接口并整合-->
+        <dependency>
 
-    <dependency>
+            <groupId>ch.qos.logback</groupId>
 
-      <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
 
-      <artifactId>logback-classic</artifactId>
+            <version>1.1.1</version>
 
-      <version>1.1.1</version>
+        </dependency>
 
-    </dependency>
 
+        <!--1.数据库相关依赖-->
 
+        <dependency>
 
+            <groupId>mysql</groupId>
 
+            <artifactId>mysql-connector-java</artifactId>
 
-    <!--1.数据库相关依赖-->
+            <version>5.1.35</version>
 
-    <dependency>
+            <scope>runtime</scope>
 
-      <groupId>mysql</groupId>
+        </dependency>
 
-      <artifactId>mysql-connector-java</artifactId>
+        <dependency>
 
-      <version>5.1.35</version>
+            <groupId>c3p0</groupId>
 
-      <scope>runtime</scope>
+            <artifactId>c3p0</artifactId>
 
-    </dependency>
+            <version>0.9.1.1</version>
 
-    <dependency>
+        </dependency>
 
-      <groupId>c3p0</groupId>
 
-      <artifactId>c3p0</artifactId>
+        <!--2.dao框架:MyBatis依赖-->
 
-      <version>0.9.1.1</version>
+        <dependency>
 
-    </dependency>
+            <groupId>org.mybatis</groupId>
 
+            <artifactId>mybatis</artifactId>
 
+            <version>3.3.0</version>
 
-    <!--2.dao框架:MyBatis依赖-->
+        </dependency>
 
-    <dependency>
+        <!--mybatis自身实现的spring整合依赖-->
 
-      <groupId>org.mybatis</groupId>
+        <dependency>
 
-      <artifactId>mybatis</artifactId>
+            <groupId>org.mybatis</groupId>
 
-      <version>3.3.0</version>
+            <artifactId>mybatis-spring</artifactId>
 
-    </dependency>
+            <version>1.2.3</version>
 
-    <!--mybatis自身实现的spring整合依赖-->
+        </dependency>
 
-    <dependency>
 
-      <groupId>org.mybatis</groupId>
+        <!--3.Servlet web相关依赖-->
 
-      <artifactId>mybatis-spring</artifactId>
+        <dependency>
 
-      <version>1.2.3</version>
+            <groupId>taglibs</groupId>
 
-    </dependency>
+            <artifactId>standard</artifactId>
 
+            <version>1.1.2</version>
 
+        </dependency>
 
-    <!--3.Servlet web相关依赖-->
+        <dependency>
 
-    <dependency>
+            <groupId>jstl</groupId>
 
-      <groupId>taglibs</groupId>
+            <artifactId>jstl</artifactId>
 
-      <artifactId>standard</artifactId>
+            <version>1.2</version>
 
-      <version>1.1.2</version>
+        </dependency>
 
-    </dependency>
+        <dependency>
 
-    <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
 
-      <groupId>jstl</groupId>
+            <artifactId>jackson-databind</artifactId>
 
-      <artifactId>jstl</artifactId>
+            <version>2.5.4</version>
 
-      <version>1.2</version>
+        </dependency>
 
-    </dependency>
+        <dependency>
 
-    <dependency>
+            <groupId>javax.servlet</groupId>
 
-      <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>javax.servlet-api</artifactId>
 
-      <artifactId>jackson-databind</artifactId>
+            <version>3.1.0</version>
 
-      <version>2.5.4</version>
+        </dependency>
 
-    </dependency>
 
-    <dependency>
+        <!--4:spring依赖-->
 
-      <groupId>javax.servlet</groupId>
+        <!--1)spring核心依赖-->
 
-      <artifactId>javax.servlet-api</artifactId>
+        <dependency>
 
-      <version>3.1.0</version>
+            <groupId>org.springframework</groupId>
 
-    </dependency>
+            <artifactId>spring-core</artifactId>
 
+            <version>4.2.5.RELEASE</version>
 
+        </dependency>
 
-    <!--4:spring依赖-->
+        <dependency>
 
-    <!--1)spring核心依赖-->
+            <groupId>org.springframework</groupId>
 
-    <dependency>
+            <artifactId>spring-beans</artifactId>
 
-      <groupId>org.springframework</groupId>
+            <version>4.2.5.RELEASE</version>
 
-      <artifactId>spring-core</artifactId>
+        </dependency>
 
-      <version>4.2.5.RELEASE</version>
+        <dependency>
 
-    </dependency>
+            <groupId>org.springframework</groupId>
 
-    <dependency>
+            <artifactId>spring-context</artifactId>
 
-      <groupId>org.springframework</groupId>
+            <version>4.2.5.RELEASE</version>
 
-      <artifactId>spring-beans</artifactId>
+        </dependency>
 
-      <version>4.2.5.RELEASE</version>
+        <!--2)spring dao层依赖-->
 
-    </dependency>
+        <dependency>
 
-    <dependency>
+            <groupId>org.springframework</groupId>
 
-      <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
 
-      <artifactId>spring-context</artifactId>
+            <version>4.2.5.RELEASE</version>
 
-      <version>4.2.5.RELEASE</version>
+        </dependency>
 
-    </dependency>
+        <dependency>
 
-    <!--2)spring dao层依赖-->
+            <groupId>org.springframework</groupId>
 
-    <dependency>
+            <artifactId>spring-tx</artifactId>
 
-      <groupId>org.springframework</groupId>
+            <version>4.2.5.RELEASE</version>
 
-      <artifactId>spring-jdbc</artifactId>
+        </dependency>
 
-      <version>4.2.5.RELEASE</version>
+        <!--3)springweb相关依赖-->
 
-    </dependency>
+        <dependency>
 
-    <dependency>
+            <groupId>org.springframework</groupId>
 
-      <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
 
-      <artifactId>spring-tx</artifactId>
+            <version>4.2.5.RELEASE</version>
 
-      <version>4.2.5.RELEASE</version>
+        </dependency>
 
-    </dependency>
+        <dependency>
 
-    <!--3)springweb相关依赖-->
+            <groupId>org.springframework</groupId>
 
-    <dependency>
+            <artifactId>spring-webmvc</artifactId>
 
-      <groupId>org.springframework</groupId>
+            <version>4.2.5.RELEASE</version>
 
-      <artifactId>spring-web</artifactId>
+        </dependency>
 
-      <version>4.2.5.RELEASE</version>
+        <!--4)spring test相关依赖-->
 
-    </dependency>
+        <dependency>
 
-    <dependency>
+            <groupId>org.springframework</groupId>
 
-      <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
 
-      <artifactId>spring-webmvc</artifactId>
+            <version>4.2.5.RELEASE</version>
 
-      <version>4.2.5.RELEASE</version>
+        </dependency>
 
-    </dependency>
 
-    <!--4)spring test相关依赖-->
+        <!--添加redis依赖-->
 
-    <dependency>
+        <dependency>
 
-      <groupId>org.springframework</groupId>
+            <groupId>redis.clients</groupId>
 
-      <artifactId>spring-test</artifactId>
+            <artifactId>jedis</artifactId>
 
-      <version>4.2.5.RELEASE</version>
+            <version>2.7.3</version>
 
-    </dependency>
+        </dependency>
 
 
+        <!--prostuff序列化依赖-->
 
-    <!--添加redis依赖-->
+        <dependency>
 
-    <dependency>
+            <groupId>com.dyuproject.protostuff</groupId>
 
-      <groupId>redis.clients</groupId>
+            <artifactId>protostuff-core</artifactId>
 
-      <artifactId>jedis</artifactId>
+            <version>1.0.8</version>
 
-      <version>2.7.3</version>
+        </dependency>
 
-    </dependency>
+        <dependency>
 
+            <groupId>com.dyuproject.protostuff</groupId>
 
+            <artifactId>protostuff-runtime</artifactId>
 
-    <!--prostuff序列化依赖-->
+            <version>1.0.8</version>
 
-    <dependency>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+        </dependency>
 
-      <groupId>com.dyuproject.protostuff</groupId>
 
-      <artifactId>protostuff-core</artifactId>
-
-      <version>1.0.8</version>
-
-    </dependency>
-
-    <dependency>
-
-      <groupId>com.dyuproject.protostuff</groupId>
-
-      <artifactId>protostuff-runtime</artifactId>
-
-      <version>1.0.8</version>
-
-    </dependency>
-      <dependency>
-          <groupId>junit</groupId>
-          <artifactId>junit</artifactId>
-          <version>4.11</version>
-      </dependency>
-
-
-  </dependencies>
-  <build>
-    <finalName>senkill</finalName>
-      <plugins>
-          <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-compiler-plugin</artifactId>
-              <configuration>
-                  <source>1.6</source>
-                  <target>1.6</target>
-              </configuration>
-          </plugin>
-      </plugins>
-  </build>
+    </dependencies>
+    <build>
+        <finalName>senkill</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
