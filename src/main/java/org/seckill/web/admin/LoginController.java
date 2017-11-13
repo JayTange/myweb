@@ -1,6 +1,6 @@
 package org.seckill.web.admin;
 
-import org.seckill.dao.User;
+import org.seckill.entity.User;
 import org.seckill.dto.WebResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

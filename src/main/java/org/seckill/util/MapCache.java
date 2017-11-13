@@ -31,7 +31,7 @@ public class MapCache {
     }
 
     public MapCache(int cacheCount) {
-        cachePool = new ConcurrentHashMap<>(cacheCount);
+        cachePool = new ConcurrentHashMap<String, CacheObject>(cacheCount);
     }
 
     /**

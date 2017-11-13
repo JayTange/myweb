@@ -7,7 +7,7 @@ public class Contents {
 //    @NotEmpty(message = "标题不能为空")
 //    @Length(max = MAX_TITLE_COUNT, message = "文章标题最多可以输入%d个字符")
     private String title;
-    // 内容缩略名
+    // 路径
     private String slug;
     // 内容生成时的GMT unix时间戳
     private Integer created;

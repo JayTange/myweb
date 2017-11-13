@@ -2,11 +2,13 @@ package org.seckill.web.admin;
 
 import org.apache.commons.lang3.StringUtils;
 import org.seckill.dto.Page;
+import org.seckill.dto.RestResponseBo;
 import org.seckill.dto.WebResult;
 import org.seckill.entity.Contents;
 import org.seckill.entity.Metas;
 import org.seckill.entity.UserInfo;
 import org.seckill.enums.Types;
+import org.seckill.exception.TipException;
 import org.seckill.service.ArticleService;
 import org.seckill.service.ContentsService;
 import org.seckill.web.BaseController;
@@ -26,7 +28,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping(value = "/articlemanage")
-public class ArticleController extends BaseController{
+public class ArticleController extends BaseController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
@@ -34,6 +36,7 @@ public class ArticleController extends BaseController{
 
     @Autowired
     private ArticleService articleService;
+
     /**
      * 显示文章列表
      *
@@ -84,25 +87,41 @@ public class ArticleController extends BaseController{
         }
     }
 
-    @RequestMapping(value = "/newarticle",method = RequestMethod.GET)
-    public String newArticle(Model model){
+    @RequestMapping(value = "/newarticle", method = RequestMethod.GET)
+    public String newArticle(Model model) {
         List<Metas> categories = articleService.getArticleType("category");
-        model.addAttribute("categories",categories);
+        model.addAttribute("categories", categories);
         return "admin/articleedit";
     }
 
     @RequestMapping(value = "/publish")
     @ResponseBody
-    public WebResult publishArticle(Contents contents, HttpServletRequest request){
+    public RestResponseBo publishArticle(Contents contents, HttpServletRequest request) {
         // 获取用户信息
         UserInfo user = this.user(request);
         // 获取uid
-        contents.setAuthorId(user.getUid());
+        if (user!= null) {
+            contents.setAuthorId(user.getUid());
+        } else {
+            // user默认为1
+            contents.setAuthorId(1);
+        }
         contents.setType(Types.ARTICLE.getType());
-        if (StringUtils.isBlank(contents.getCategories())){
+        if (StringUtils.isBlank(contents.getCategories())) {
             contents.setCategories("默认分类");
         }
+        try {
+            articleService.publish(contents);
 
-        return null;
+        } catch (Exception e) {
+            String msg = "文章发布失败";
+            if (e instanceof TipException) {
+                msg = e.getMessage();
+            } else {
+                logger.error(msg, e);
+            }
+            return RestResponseBo.fail(msg);
+        }
+        return RestResponseBo.ok();
     }
 }

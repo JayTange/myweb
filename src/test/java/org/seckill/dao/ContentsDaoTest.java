@@ -3,6 +3,7 @@ package org.seckill.dao;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.seckill.entity.Contents;
+import org.seckill.util.DateKit;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -43,6 +44,21 @@ public class ContentsDaoTest {
         String slug = "about";
         int count = contentsDao.getSlugCount(slug);
         System.err.println("slug数量为"+count);
+    }
+
+    @Test
+    public void insertContent()throws Exception{
+       Contents contents = new Contents();
+       contents.setTitle("测试");
+       contents.setSlug("qerqewr");
+       contents.setCreated(DateKit.getCurrentUnixTime());
+       contents.setModified(DateKit.getCurrentUnixTime());
+       contents.setContent("这是个测试");
+       contents.setAuthorId(1);
+       contents.setHits(0);
+       contents.setType("daf");
+       contents.setStatus("publish");
+       contentsDao.insertContent(contents);
     }
 
 }

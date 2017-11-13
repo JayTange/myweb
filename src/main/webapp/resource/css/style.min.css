@@ -2575,7 +2575,7 @@ div.dataTables_info {
 }
 
 .select2-container-multi .select2-choices .select2-search-choice-close {
-    top: 6px
+    top: 3px
 }
 
 .select2-chosen {
@@ -3698,8 +3698,7 @@ body.fixed-left .side-menu.left {
 }
 
 .bg-img {
-    background: url(../images/small/bg.png) center;
-    background-size: cover;
+    background: url(../images/small/bg.jpg) center
 }
 
 .bg-overlay {
@@ -3973,7 +3972,7 @@ body.fixed-left .side-menu.left {
     width: 120px;
     height: 120px;
     overflow: hidden;
-    background: url(/static/admin/images/loading.gif) no-repeat;
+    background: url(/admin/images/loading.gif) no-repeat;
     z-index: 10;
     display: none;
 }

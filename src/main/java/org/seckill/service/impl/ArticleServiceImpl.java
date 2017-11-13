@@ -1,7 +1,9 @@
 package org.seckill.service.impl;
 
+import com.vdurmont.emoji.EmojiParser;
 import org.apache.commons.lang3.StringUtils;
 import org.seckill.constant.WebConst;
+import org.seckill.dao.ContentsDao;
 import org.seckill.dao.MetasDao;
 import org.seckill.entity.Contents;
 import org.seckill.entity.Metas;
@@ -9,10 +11,10 @@ import org.seckill.exception.TipException;
 import org.seckill.service.ArticleService;
 import org.seckill.service.ContentsService;
 import org.seckill.util.CommonTUtils;
+import org.seckill.util.DateKit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -21,10 +23,14 @@ import java.util.List;
  * @author tnagj
  */
 @Service
+@SuppressWarnings("SpringJavaAutowiringInspection")
 public class ArticleServiceImpl implements ArticleService {
 
-    @Resource
+    @Autowired
     private MetasDao metasDao;
+
+    @Autowired
+    private ContentsDao contentsDao;
 
     @Autowired
     private ContentsService contentsService;
@@ -60,15 +66,31 @@ public class ArticleServiceImpl implements ArticleService {
             if (contents.getSlug().length() < 5) {
                 throw new TipException("路径太短了");
             }
-            if (!CommonTUtils.isPath(contents.getSlug()))throw  new TipException("输入路径不合法");
-            int slugCount = contentsService.getSlugCount();
+//            if(!CommonTUtils.isPath(contents.getSlug())){
+//                throw  new TipException("输入路径不合法");
+//            }
+            int slugCount = contentsDao.getSlugCount(contents.getSlug());
             if (slugCount>0){
                 throw new TipException("该路径已经存在，请重新输入");
             }
         }else {
             contents.setSlug(null);
         }
-//        contents.setContent();
+        contents.setContent(EmojiParser.parseToAliases(contents.getContent()));
+        int time = DateKit.getCurrentUnixTime();
+        //创建时间
+        contents.setCreated(time);
+        //修改时间
+        contents.setModified(time);
+        //点击数
+        contents.setHits(0);
+        //评论数
+        contents.setCommentsNum(0);
+
+        String tags = contents.getTags();
+        String categoris = contents.getCategories();
+
+        contentsDao.insertContent(contents);
     }
 
     /**

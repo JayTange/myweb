@@ -1,4 +1,4 @@
-package org.seckill.dao;
+package org.seckill.entity;
 
 public class User {
     private String userName;
