@@ -98,7 +98,7 @@
     </div>
 
     <div class="col-md-12">
-        <form id="articleForm">
+        <form id="articleForm" role="form" novalidate="novalidate">
             <div class="form-group col-md-6" style="padding: 0 10px 0 0;">
                 <input class="form-control" placeholder="请输入文章标题（必须）" name="title" required
                        value="${contents.title}"/>
@@ -129,25 +129,10 @@
 
             <div class="clearfix"></div>
             <div class="form-group col-xs-12">
-                <div class="pull-right">
-                    　 <c:choose>
-                    <c:when test="${contents!=null && contents.fmtType=='html'}">
-                        <a id="switch-btn" href="javascript:void(0)"
-                           class="btn btn-purple btn-sm waves-effect waves-light switch-editor">
-                            切换为Markdown编辑器
-                        </a>
-                    </c:when>
-                    <c:otherwise>
-                        <a id="switch-btn" href="javascript:void(0)"
-                           class="btn btn-purple btn-sm waves-effect waves-light switch-editor">
-                            切换为富文本编辑器
-                        </a>
-                    </c:otherwise>
-                </c:choose>
-                </div>
+                <div class="pull-right"></div>
             </div>
             <div id="md-container" class="form-group col-md-12">
-                                <textarea id="md-editor">${contents.content}</textarea>
+                <textarea id="md-editor">${contents.content}</textarea>
             </div>
 
 

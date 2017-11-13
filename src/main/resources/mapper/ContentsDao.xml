@@ -9,14 +9,18 @@
         FROM t_contents
         ORDER BY cid
         LIMIT #{limit}
-        OFFSET #{offset}
+        OFFSET #{offset};
     </select>
 
     <select id="getCount" resultType="Integer">
-        select count(cid) from t_contents;
+        select count(cid) from t_contents
     </select>
 
     <delete id="deleteContent">
-        DELETE FROM t_contents WHERE cid = #{cid}
+        DELETE FROM t_contents WHERE cid = #{cid};
     </delete>
+
+    <select id="getSlugCount" resultType="Integer">
+        SELECT count(slug) FROM t_contents WHERE slug = #{slug};
+    </select>
 </mapper>

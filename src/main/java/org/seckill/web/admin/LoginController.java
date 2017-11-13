@@ -1,4 +1,4 @@
-package org.seckill.web;
+package org.seckill.web.admin;
 
 import org.seckill.dao.User;
 import org.seckill.dto.WebResult;

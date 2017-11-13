@@ -38,4 +38,11 @@ public class ContentsDaoTest {
         contentsDao.deleteContent(cid);
     }
 
+    @Test
+    public void getSlug() throws Exception{
+        String slug = "about";
+        int count = contentsDao.getSlugCount(slug);
+        System.err.println("slug数量为"+count);
+    }
+
 }

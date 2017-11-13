@@ -33,4 +33,12 @@ public class ContentsServiceImpl implements ContentsService {
     public void deleteContent(Integer cid) {
         contentsDao.deleteContent(cid);
     }
+
+    /**
+     * @return
+     */
+    @Override
+    public Integer getSlugCount() {
+        return null;
+    }
 }

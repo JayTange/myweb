@@ -1,18 +1,24 @@
-package org.seckill.web;
+package org.seckill.web.admin;
 
+import org.apache.commons.lang3.StringUtils;
 import org.seckill.dto.Page;
 import org.seckill.dto.WebResult;
 import org.seckill.entity.Contents;
 import org.seckill.entity.Metas;
+import org.seckill.entity.UserInfo;
+import org.seckill.enums.Types;
 import org.seckill.service.ArticleService;
 import org.seckill.service.ContentsService;
+import org.seckill.web.BaseController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -20,7 +26,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping(value = "/articlemanage")
-public class ArticleController {
+public class ArticleController extends BaseController{
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
@@ -78,10 +84,25 @@ public class ArticleController {
         }
     }
 
-    @RequestMapping(value = "/publish",method = RequestMethod.GET)
+    @RequestMapping(value = "/newarticle",method = RequestMethod.GET)
     public String newArticle(Model model){
         List<Metas> categories = articleService.getArticleType("category");
         model.addAttribute("categories",categories);
         return "admin/articleedit";
+    }
+
+    @RequestMapping(value = "/publish")
+    @ResponseBody
+    public WebResult publishArticle(Contents contents, HttpServletRequest request){
+        // 获取用户信息
+        UserInfo user = this.user(request);
+        // 获取uid
+        contents.setAuthorId(user.getUid());
+        contents.setType(Types.ARTICLE.getType());
+        if (StringUtils.isBlank(contents.getCategories())){
+            contents.setCategories("默认分类");
+        }
+
+        return null;
     }
 }

@@ -1,5 +1,6 @@
 package org.seckill.service;
 
+import org.seckill.entity.Contents;
 import org.seckill.entity.Metas;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +12,11 @@ import java.util.List;
  */
 public interface ArticleService {
 
+    /**
+     * 发布文章
+     * @param contents
+     */
+    void publish(Contents contents);
     /**
      * 获取文章分类
      *

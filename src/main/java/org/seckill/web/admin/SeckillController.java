@@ -1,4 +1,4 @@
-package org.seckill.web;
+package org.seckill.web.admin;
 
 import org.seckill.dto.Exposer;
 import org.seckill.dto.SeckillExcution;

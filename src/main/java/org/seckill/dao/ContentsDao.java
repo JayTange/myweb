@@ -29,4 +29,11 @@ public interface ContentsDao {
      * @param cid
      */
     void deleteContent(Integer cid);
+
+    /**
+     * 根据路径获取文章数
+     * @param slug
+     * @return
+     */
+    Integer getSlugCount(String slug);
 }

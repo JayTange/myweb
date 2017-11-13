@@ -22,4 +22,10 @@ public interface ContentsService {
      * 删除文章
      */
     void deleteContent(Integer cid);
+
+    /**
+     *
+     * @return
+     */
+    Integer getSlugCount();
 }
