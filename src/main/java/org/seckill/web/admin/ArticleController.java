@@ -1,6 +1,7 @@
 package org.seckill.web.admin;
 
 import org.apache.commons.lang3.StringUtils;
+import org.seckill.dao.ContentsDao;
 import org.seckill.dto.Page;
 import org.seckill.dto.RestResponseBo;
 import org.seckill.dto.WebResult;
@@ -123,5 +124,11 @@ public class ArticleController extends BaseController {
             return RestResponseBo.fail(msg);
         }
         return RestResponseBo.ok();
+    }
+
+
+    @RequestMapping(value = "/{cid}")
+    public String modifyPage(@PathVariable String cid,HttpServletRequest request){
+        return "";
     }
 }

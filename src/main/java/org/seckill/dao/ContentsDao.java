@@ -48,4 +48,12 @@ public interface ContentsDao {
      * @return
      */
     int insertContent(Contents contents);
+
+    /**
+     * 根据cid获取文章内容
+     *
+     * @param cid
+     * @return
+     */
+    Contents getContentByCid(String cid);
 }
