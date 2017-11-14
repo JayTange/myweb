@@ -61,4 +61,42 @@ public class ContentsDaoTest {
        contentsDao.insertContent(contents);
     }
 
+    @Test
+    public void updateByPrimaryKey()throws Exception{
+        Contents contents = new Contents();
+        contents.setCid(1);
+        contents.setTitle("测试");
+        contents.setSlug("qerqewr");
+        contents.setCreated(DateKit.getCurrentUnixTime());
+        contents.setModified(DateKit.getCurrentUnixTime());
+        contents.setContent("这是个测试");
+        contents.setAuthorId(1);
+        contents.setHits(0);
+        contents.setType("daf");
+        contents.setStatus("publish");
+        contentsDao.updateByPrimaryKey(contents);
+    }
+
+    @Test
+    public void selectByPrimaryKey()throws Exception{
+        int cid = 1;
+        Contents contents = contentsDao.selectByPrimaryKey(cid);
+        System.out.println(contents);
+    }
+
+    @Test
+    public void updateByPrimaryKeyWithCondition() throws Exception{
+        Contents contents = new Contents();
+        contents.setCid(29);
+        contents.setTitle("测试");
+        contents.setSlug("qerqewr");
+        contents.setCreated(DateKit.getCurrentUnixTime());
+        contents.setModified(DateKit.getCurrentUnixTime());
+        contents.setContent("这是个测试");
+        contents.setAuthorId(1);
+        contents.setHits(0);
+        contents.setType("daf");
+        contents.setStatus("publish");
+        contentsDao.updateByPrimaryKeyWithCondition(contents);
+    }
 }

@@ -10,10 +10,11 @@ public interface ContentsService {
      *
      * @return
      */
-    List<Contents> getContentsList(Integer limit,Integer offset);
+    List<Contents> getContentsList(Integer limit, Integer offset);
 
     /**
      * 获取文章总数
+     *
      * @return
      */
     Integer getContentsCount();
@@ -24,8 +25,10 @@ public interface ContentsService {
     void deleteContent(Integer cid);
 
     /**
+     * 根据ID获取文章内容
      *
+     * @param id
      * @return
      */
-    Integer getSlugCount();
+    Contents getContentByCid(String id);
 }

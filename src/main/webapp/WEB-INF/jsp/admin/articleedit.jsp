@@ -82,7 +82,7 @@
             <div class="clearfix"></div>
             <div class="form-group">
               <textarea style="height: 450px" autocomplete="off" id="text" name="text"
-                        class="markdown-textarea" value="${contents.content}"></textarea>
+                        class="markdown-textarea" value="${contents.content}">${contents.content}</textarea>
             </div>
 
             <div class="form-group col-md-3 col-sm-4">

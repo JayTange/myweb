@@ -52,8 +52,24 @@ public interface ContentsDao {
     /**
      * 根据cid获取文章内容
      *
+     * @param contents
+     * @return
+     */
+    int updateByPrimaryKey(Contents contents);
+
+    /**
+     * 根据cid获取文章
+     *
      * @param cid
      * @return
      */
-    Contents getContentByCid(String cid);
+    Contents selectByPrimaryKey(int cid);
+
+    /**
+     * 条件更新，如果有些为空，则不更新
+     *
+     * @param contents
+     * @return
+     */
+    int updateByPrimaryKeyWithCondition(Contents contents);
 }

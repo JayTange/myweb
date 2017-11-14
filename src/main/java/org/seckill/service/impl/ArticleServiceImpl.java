@@ -12,6 +12,7 @@ import org.seckill.service.ArticleService;
 import org.seckill.service.ContentsService;
 import org.seckill.util.CommonTUtils;
 import org.seckill.util.DateKit;
+import org.seckill.util.Tools;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -104,4 +105,51 @@ public class ArticleServiceImpl implements ArticleService {
     public List<Metas> getArticleType(String type) {
         return metasDao.queryAll(type);
     }
+
+    @Override
+    public Contents getContentByCid(String cid) {
+        if (StringUtils.isNotBlank(cid)){
+            if (Tools.isNumber(cid)){
+                Contents contents = contentsDao.selectByPrimaryKey(Integer.valueOf(cid));
+                if (contents!=null){
+                    contents.setHits(contents.getHits()+1);
+                    contentsDao.updateByPrimaryKey(contents);
+                }
+                return contents;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void updateArticle(Contents contents) {
+        if (null == contents || null == contents.getCid()){
+            throw  new TipException("文章对象不能为空");
+        }
+        if (StringUtils.isBlank(contents.getTitle())){
+            throw new TipException("标题不能为空");
+        }
+        if (StringUtils.isBlank(contents.getContent())){
+            throw new TipException("内容不能为空");
+        }
+        if (contents.getTitle().length() > 200) {
+            throw new TipException("文章标题过长");
+        }
+        if (contents.getContent().length() > 65000) {
+            throw new TipException("文章内容过长");
+        }
+//        if (null == contents.getAuthorId()) {
+//            throw new TipException("请登录后发布文章");
+//        }
+        if (StringUtils.isBlank(contents.getSlug())) {
+            contents.setSlug(null);
+        }
+        int modifyTime = DateKit.getCurrentUnixTime();
+        contents.setModified(modifyTime);
+
+        contents.setContent(EmojiParser.parseToAliases(contents.getContent()));
+        contentsDao.updateByPrimaryKeyWithCondition(contents);
+    }
+
+
 }

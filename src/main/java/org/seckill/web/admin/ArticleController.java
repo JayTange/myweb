@@ -127,8 +127,36 @@ public class ArticleController extends BaseController {
     }
 
 
-    @RequestMapping(value = "/{cid}")
-    public String modifyPage(@PathVariable String cid,HttpServletRequest request){
-        return "";
+    @RequestMapping(value = "/modify/{cid}")
+    public String modifyPage(@PathVariable String cid,Model model){
+        Contents contents = articleService.getContentByCid(cid);
+        model.addAttribute("contents",contents);
+        List<Metas> categories = articleService.getArticleType("category");
+        model.addAttribute("categories", categories);
+        return "admin/articleedit";
+    }
+
+    @RequestMapping(value = "/modify")
+    @ResponseBody
+    public RestResponseBo modifyArticle(Contents contents,HttpServletRequest request){
+        UserInfo userInfo = this.user(request);
+        if (userInfo!=null){
+            contents.setAuthorId(userInfo.getUid());
+        }else {
+            contents.setAuthorId(1);
+        }
+        contents.setType(Types.ARTICLE.getType());
+        try{
+            articleService.updateArticle(contents);
+            return RestResponseBo.ok();
+        }catch (Exception e){
+            String msg = "文章修改失败";
+            if (e instanceof TipException) {
+                msg = e.getMessage();
+            } else {
+                logger.error(msg, e);
+            }
+            return RestResponseBo.fail(msg);
+        }
     }
 }

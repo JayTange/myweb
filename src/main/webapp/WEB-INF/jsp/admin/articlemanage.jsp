@@ -39,7 +39,7 @@
                     </td>
                     <td>${sk.categories}</td>
                     <td>
-                        <a href="/admin/article/+${sk.cid}"
+                        <a href="/articlemanage/modify/${sk.cid}"
                            class="btn btn-primary btn-sm waves-effect waves-light m-b-5"><i
                                 class="fa fa-edit"></i> <span>编辑</span></a>
                         <a href="javascript:void(0)" onclick="delPost(${sk.cid});"
@@ -76,9 +76,9 @@
         </ul>
     </div>
 </div>
+<%@include file="../util/footer.jsp"%>
 <script type="text/javascript">
     var tale = new $.tale();
-
     function delPost(cid) {
         var data = {
             "cid":cid
@@ -102,6 +102,6 @@
         });
     }
 </script>
-<%@include file="../util/footer.jsp"%>
+
 </body>
 </html>

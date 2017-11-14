@@ -8,15 +8,18 @@ import java.util.List;
 
 /**
  * 文章服务
+ *
  * @author tangj
  */
 public interface ArticleService {
 
     /**
      * 发布文章
+     *
      * @param contents
      */
     void publish(Contents contents);
+
     /**
      * 获取文章分类
      *
@@ -24,4 +27,19 @@ public interface ArticleService {
      * @return
      */
     List<Metas> getArticleType(String type);
+
+    /**
+     * 根据ID获取文章内容
+     *
+     * @param id
+     * @return
+     */
+    Contents getContentByCid(String id);
+
+    /**
+     * 更新文章
+     *
+     * @param contents
+     */
+    void updateArticle(Contents contents);
 }
