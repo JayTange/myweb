@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<%@include file="../util/header.jsp" %>
+<%@include file="header.jsp" %>
 <%@include file="../common/tag.jsp" %>
 <!--文章编辑模块 -->
 <link href="/resource/plugin/tagsinput/jquery.tagsinput.css" rel="stylesheet">
@@ -126,7 +126,7 @@
         </form>
     </div>
 </div>
-<%@include file="../util/footer.jsp" %>
+<%@include file="footer.jsp" %>
 
 
 <script src="/resource/plugin/tagsinput/jquery.tagsinput.min.js"></script>

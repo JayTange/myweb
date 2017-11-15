@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@include file="../util/header.jsp" %>
+<%@include file="header.jsp" %>
 <div class="row">
     <div class="col-sm-12">
         <h4 class="page-title">Tale仪表盘</h4>
@@ -36,6 +36,6 @@
 
     <div class="row"></div>
 </div>
-<%@include file="../util/footer.jsp"%>
+<%@include file="footer.jsp"%>
 </body>
 </html>
