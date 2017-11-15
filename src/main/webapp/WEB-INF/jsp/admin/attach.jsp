@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <%@include file="header.jsp" %>
-<%@include file="../common/tag.jsp" %>
+<%@include file="../theme/tag.jsp" %>
 <link href="//cdn.bootcss.com/dropzone/4.3.0/min/dropzone.min.css" rel="stylesheet"/>
 <style>
     #dropzone {

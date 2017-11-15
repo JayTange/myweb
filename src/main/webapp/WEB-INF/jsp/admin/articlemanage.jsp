@@ -1,7 +1,7 @@
 <%@ page import="org.seckill.dto.Page" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="header.jsp" %>
-<%@include file="../common/tag.jsp"%>
+<%@include file="../theme/tag.jsp"%>
 <div class="row">
     <div class="col-sm-12">
         <h4 class="page-title">文章管理</h4>

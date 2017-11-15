@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <%@include file="header.jsp" %>
-<%@include file="../common/tag.jsp" %>
+<%@include file="../theme/tag.jsp" %>
 <!--文章编辑模块 -->
 <link href="/resource/plugin/tagsinput/jquery.tagsinput.css" rel="stylesheet">
 <link href="/resource/plugin/select2/select2-bootstrap.css" rel="stylesheet">

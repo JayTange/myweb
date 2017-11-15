@@ -243,7 +243,6 @@ public final class Commons {
     }
 
 
-
     private static final String[] ICONS = {"bg-ico-book", "bg-ico-game", "bg-ico-note", "bg-ico-chat", "bg-ico-code", "bg-ico-image", "bg-ico-web", "bg-ico-link", "bg-ico-design", "bg-ico-lock"};
 
     /**
@@ -263,7 +262,7 @@ public final class Commons {
      */
     public static Map<String, String> social() {
         final String prefix = "social_";
-        Map<String, String> map = new HashMap<String,String>();
+        Map<String, String> map = new HashMap<String, String>();
         map.put("weibo", WebConst.initConfig.get(prefix + "weibo"));
         map.put("zhihu", WebConst.initConfig.get(prefix + "zhihu"));
         map.put("github", WebConst.initConfig.get(prefix + "github"));
@@ -271,4 +270,12 @@ public final class Commons {
         return map;
     }
 
+    /**
+     * 测试El表达
+     *
+     * @return
+     */
+    public static String getTestElString() {
+        return "testel";
+    }
 }

@@ -1,5 +1,6 @@
 package org.seckill.service;
 
+import org.apache.ibatis.annotations.Param;
 import org.seckill.entity.Contents;
 import org.seckill.entity.Metas;
 import org.springframework.stereotype.Service;
@@ -42,4 +43,19 @@ public interface ArticleService {
      * @param contents
      */
     void updateArticle(Contents contents);
+
+    /**
+     * 根据偏移量查询文章列表
+     *
+     * @param offset
+     * @param limit
+     * @return
+     */
+    List<Contents> queryAll(@Param("limit") int limit, @Param("offset") int offset);
+    /**
+     * 获取文章总数
+     *
+     * @return
+     */
+    Integer getContentsCount();
 }

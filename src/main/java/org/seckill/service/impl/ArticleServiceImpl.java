@@ -151,5 +151,15 @@ public class ArticleServiceImpl implements ArticleService {
         contentsDao.updateByPrimaryKeyWithCondition(contents);
     }
 
+    @Override
+    public List<Contents> queryAll(int limit, int offset) {
+        List<Contents> contentsList = contentsDao.queryAll(limit,offset);
+        return  contentsList;
+    }
+
+    @Override
+    public Integer getContentsCount() {
+        return contentsDao.getCount();
+    }
 
 }
