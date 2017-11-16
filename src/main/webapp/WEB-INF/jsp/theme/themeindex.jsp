@@ -12,18 +12,19 @@
                     <%
                         Random random = new Random();
                         Integer randInt = random.nextInt(10);
-                        request.setAttribute("randInt", randInt);
+                        String bgimg = "/resource/user/img/rand/"+randInt+".jpg";
+                        request.setAttribute("bgimg", bgimg);
 
                     %>
-                    <a href="/article/+${sk.slug} " class="item-thumb  bg-deepgrey"
-                       style="background-image:url("/resource/user/img/+${randInt}.jpg")>
+                    <a href="/article/${sk.slug} " class="item-thumb  bg-deepgrey"
+                       style="background-image: url('${bgimg}');">
                     <dir class="item-desc">${sk.tags}</dir>
                     </a>
                     <div class="item-slant reverse-slant &lt; bg-deepgrey"></div>
                     <div class="item-slant"></div>
                     <div class="item-label">
                         <div class="item-title">
-                            <a href="/article/+${sk.slug}">${sk.title}</a>
+                            <a href="/article/${sk.slug}">${sk.title}</a>
                         </div>
                     </div>
                 </c:forEach>
