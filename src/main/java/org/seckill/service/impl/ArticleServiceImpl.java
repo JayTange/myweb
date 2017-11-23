@@ -116,6 +116,8 @@ public class ArticleServiceImpl implements ArticleService {
                     contentsDao.updateByPrimaryKey(contents);
                 }
                 return contents;
+            }else {
+
             }
         }
         return null;
@@ -160,6 +162,16 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public Integer getContentsCount() {
         return contentsDao.getCount();
+    }
+
+    /**
+     * 根据可以空的情况 来更新contents
+     *
+     * @param contents
+     */
+    @Override
+    public void updateByPrimaryKey(Contents contents) {
+        contentsDao.updateByPrimaryKey(contents);
     }
 
 }

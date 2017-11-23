@@ -3,7 +3,6 @@ package org.seckill.service;
 import org.apache.ibatis.annotations.Param;
 import org.seckill.entity.Contents;
 import org.seckill.entity.Metas;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -52,10 +51,18 @@ public interface ArticleService {
      * @return
      */
     List<Contents> queryAll(@Param("limit") int limit, @Param("offset") int offset);
+
     /**
      * 获取文章总数
      *
      * @return
      */
     Integer getContentsCount();
+
+    /**
+     * 根据可以空的情况 来更新contents
+     *
+     * @param contents
+     */
+    void updateByPrimaryKey(Contents contents);
 }

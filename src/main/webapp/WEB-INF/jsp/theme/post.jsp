@@ -12,11 +12,14 @@
             String created = Commons.fmtdate(contents.getCreated());
             String categories = Commons.show_categories(contents.getCategories());
             String tags = Commons.show_tags(contents.getTags());
+            String articleShow = Commons.article(contents.getContent());
+            String modified = Commons.fmtdate(contents.getModified(),'yyyy/MM/dd HH:mm');
 
             request.setAttribute("created",created);
             request.setAttribute("categories",categories);
             request.setAttribute("tags",tags);
-
+            request.setAttribute("articleShow",articleShow);
+            request.setAttribute("modified",modified);
         %>
 
         <div class="post-data">
@@ -27,11 +30,10 @@
     <div id="post-content" class="post-content" itemprop="articleBody">
 
         <p class="post-tags">${tags}</p>
-
-        <th:block th:utext="${commons.article(article.content)}"/>
+        ${articleShow}
         <p class="post-info">
             本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名,转载请标明出处<br/>最后编辑时间为:
-            <th:block th:text="${commons.fmtdate(article.modified, 'yyyy/MM/dd HH:mm')}"/>
+            ${modified}
         </p>
     </div>
 </article>
