@@ -99,4 +99,10 @@ public class ContentsDaoTest {
         contents.setStatus("publish");
         contentsDao.updateByPrimaryKeyWithCondition(contents);
     }
+
+    @Test
+    public void selectBySlug() throws  Exception{
+        List<Contents> contents = contentsDao.selectBySlug("book");
+        System.out.println(contents.size());
+    }
 }

@@ -8,12 +8,12 @@
             <a href="#" itemprop="name headline"> ${article.title}</a>
         </h1>
         <%
-            Contents contents = (Contents) request.getAttribute("acticle");
+            Contents contents = (Contents) request.getAttribute("article");
             String created = Commons.fmtdate(contents.getCreated());
             String categories = Commons.show_categories(contents.getCategories());
             String tags = Commons.show_tags(contents.getTags());
             String articleShow = Commons.article(contents.getContent());
-            String modified = Commons.fmtdate(contents.getModified(),'yyyy/MM/dd HH:mm');
+            String modified = Commons.fmtdate(contents.getModified(),"yyyy/MM/dd HH:mm");
 
             request.setAttribute("created",created);
             request.setAttribute("categories",categories);

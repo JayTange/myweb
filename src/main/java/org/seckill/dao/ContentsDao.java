@@ -72,4 +72,11 @@ public interface ContentsDao {
      * @return
      */
     int updateByPrimaryKeyWithCondition(Contents contents);
+
+    /**
+     * 根据缩略名 找到文章
+     * @param slug
+     * @return
+     */
+    List<Contents> selectBySlug(String slug);
 }

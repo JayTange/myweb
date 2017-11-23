@@ -40,14 +40,14 @@ public class DateKit {
     public DateKit() {
     }
 
-    public static boolean isToday(Date date) {
-        Date now = new Date();
-        boolean result = true;
-        result &= date.getYear() == now.getYear();
-        result &= date.getMonth() == now.getMonth();
-        result &= date.getDate() == now.getDate();
-        return result;
-    }
+//    public static boolean isToday(Date date) {
+//        Date now = new Date();
+//        boolean result = true;
+//        result &= date.getYear() == now.getYear();
+//        result &= date.getMonth() == now.getMonth();
+//        result &= date.getDate() == now.getDate();
+//        return result;
+//    }
 
     public static long DaysBetween(Date date1, Date date2) {
         if(date2 == null) {

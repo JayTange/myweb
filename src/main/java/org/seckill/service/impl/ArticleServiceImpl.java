@@ -117,7 +117,11 @@ public class ArticleServiceImpl implements ArticleService {
                 }
                 return contents;
             }else {
-
+               List<Contents> contentsList = contentsDao.selectBySlug(cid);
+                if (contentsList.size()!=1){
+                    throw new TipException("query content by id and return is not one");
+                }
+                return  contentsList.get(0);
             }
         }
         return null;

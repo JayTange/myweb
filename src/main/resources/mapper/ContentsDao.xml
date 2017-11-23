@@ -91,6 +91,15 @@
         WHERE cid = #{cid,jdbcType=INTEGER}
     </select>
 
+    <select id="selectBySlug" parameterType="String" resultType="Contents">
+        SELECT
+        <include refid="Base_Column_List"/>
+        ,
+        content
+        FROM t_contents
+        WHERE slug = #{slug,jdbcType=VARCHAR}
+    </select>
+
     <update id="updateByPrimaryKeyWithCondition" parameterType="Contents">
         update t_contents
         <set>
