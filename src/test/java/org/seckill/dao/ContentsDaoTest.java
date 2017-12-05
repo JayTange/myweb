@@ -2,6 +2,7 @@ package org.seckill.dao;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.seckill.entity.Archive;
 import org.seckill.entity.Contents;
 import org.seckill.util.DateKit;
 import org.springframework.test.context.ContextConfiguration;
@@ -104,5 +105,11 @@ public class ContentsDaoTest {
     public void selectBySlug() throws  Exception{
         List<Contents> contents = contentsDao.selectBySlug("book");
         System.out.println(contents.size());
+    }
+
+    @Test
+    public void findReturnArchive() throws  Exception{
+        List<Archive> list = contentsDao.findReturnArchive();
+        System.out.println(list);
     }
 }

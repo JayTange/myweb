@@ -1,6 +1,7 @@
 package org.seckill.dao;
 
 import org.apache.ibatis.annotations.Param;
+import org.seckill.entity.Archive;
 import org.seckill.entity.Contents;
 import org.springframework.stereotype.Component;
 
@@ -75,8 +76,16 @@ public interface ContentsDao {
 
     /**
      * 根据缩略名 找到文章
+     *
      * @param slug
      * @return
      */
     List<Contents> selectBySlug(String slug);
+
+    /**
+     * 获取文章归档信息
+     *
+     * @return
+     */
+    List<Archive> findReturnArchive();
 }

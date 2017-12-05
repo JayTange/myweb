@@ -78,4 +78,6 @@ public class IndexController extends BaseController{
             cache.hset("article", "hits", hits);
         }
     }
+
+
 }

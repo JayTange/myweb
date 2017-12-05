@@ -151,4 +151,19 @@
         </set>
         where cid = #{cid,jdbcType=INTEGER}
     </update>
+
+    <resultMap id="archiveMap" type="org.seckill.entity.Archive">
+        <id column="date" property="date"/>
+        <result column="count" property="count"/>
+    </resultMap>
+
+    <select id="findReturnArchive" resultMap="archiveMap">
+        select FROM_UNIXTIME(created, '%Y年%m月') as date, count(*) as count from t_contents where type = 'post' and status = 'publish' group by date order by date desc
+    </select>
+
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.seckill.entity.Contents">
+        <result column="content" jdbcType="LONGVARCHAR" property="content" />
+    </resultMap>
+
+
 </mapper>
