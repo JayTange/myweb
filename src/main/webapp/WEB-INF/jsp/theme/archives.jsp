@@ -4,7 +4,7 @@
 <%@include file="tag.jsp" %>
 <div class="main-content archive-page clearfix">
     <div class="categorys-item">
-      <c:forEach items="${archive}" var="sk">
+      <c:forEach items="${archives}" var="sk">
           <div class="categorys-title">${sk.date}</div>
           <div class="post-lists">
               <div class="post-lists-body">

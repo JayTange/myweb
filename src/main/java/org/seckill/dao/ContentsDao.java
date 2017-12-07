@@ -88,4 +88,10 @@ public interface ContentsDao {
      * @return
      */
     List<Archive> findReturnArchive();
+
+    /**
+     * 归档文章查询
+     * @return
+     */
+    List<Contents> getContentArchive(@Param("start")int start,@Param("end")int end);
 }

@@ -2,9 +2,11 @@ package org.seckill.web;
 
 import org.seckill.constant.WebConst;
 import org.seckill.dto.Page;
+import org.seckill.entity.Archive;
 import org.seckill.entity.Contents;
 import org.seckill.exception.TipException;
 import org.seckill.service.ArticleService;
+import org.seckill.service.ISiteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +23,9 @@ public class IndexController extends BaseController{
 
     @Autowired
     private ArticleService articleService;
+
+    @Autowired
+    private ISiteService siteService;
 
     @RequestMapping("testEl")
     public String testEl(Model model){
@@ -79,5 +84,10 @@ public class IndexController extends BaseController{
         }
     }
 
-
+    @RequestMapping(value = "archives")
+    public String archives(Model model){
+        List<Archive> archives =siteService.getArchives();
+        model.addAttribute("archives",archives);
+        return  "theme/archives";
+    }
 }

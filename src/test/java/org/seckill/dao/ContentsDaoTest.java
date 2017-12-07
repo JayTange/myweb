@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
 
+import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -110,6 +111,16 @@ public class ContentsDaoTest {
     @Test
     public void findReturnArchive() throws  Exception{
         List<Archive> list = contentsDao.findReturnArchive();
+        System.out.println(list);
+    }
+
+    @Test
+    public void getContentArchive() throws Exception{
+        String date = "2017年11月";
+        Date sd = DateKit.dateFormat(date, "yyyy年MM月");
+        int start = DateKit.getUnixTimeByDate(sd);
+        int end = DateKit.getUnixTimeByDate(DateKit.dateAdd(DateKit.INTERVAL_MONTH, sd, 1)) - 1;
+        List<Contents> list = contentsDao.getContentArchive(start,end);
         System.out.println(list);
     }
 }

@@ -165,5 +165,13 @@
         <result column="content" jdbcType="LONGVARCHAR" property="content" />
     </resultMap>
 
-
+    <select id="getContentArchive" resultType="org.seckill.entity.Contents">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM t_contents
+        WHERE created > #{start}
+        AND
+        created  <![CDATA[ < ]]>#{end}
+        ORDER BY created DESC
+    </select>
 </mapper>
